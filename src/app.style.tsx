@@ -28,6 +28,10 @@ const AppStyle = StyleSheet.create({
 		marginTop: 200,
 		color: 'red'
 	},
+	arrivalView: {
+		height: 40,
+		width: '100%'
+	},
 	arrivalDate: {
 		...$TextInput,
 		borderColor: 'blue'

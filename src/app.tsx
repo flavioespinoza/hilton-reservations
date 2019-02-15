@@ -3,8 +3,11 @@ import {
     Platform,
     Text,
     View,
-    TextInput
+    TextInput,
+	TouchableOpacity
 } from "react-native";
+
+import DateTimePicker from 'react-native-modal-datetime-picker';
 
 import _ from 'lodash';
 
@@ -38,7 +41,53 @@ class App extends React.PureComponent<Props, State> {
 			departureDate: '',
 			hotel: '',
 			name: '',
+
+			isDateTimePickerVisible: false,
+			dateType: null
+
 		};
+	}
+
+	private _showDateTimePicker = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, type: string): void => {
+		if (type === 'arrival') {
+			this.setState({
+				isDateTimePickerVisible: true,
+				dateType: 'arrival'
+			});
+		} else if (type === 'departure') {
+			this.setState({
+				isDateTimePickerVisible: true,
+				dateType: 'departure'
+			});
+		}
+	};
+
+	private _onChangeText = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
+
+	};
+
+	_hideDateTimePicker () {
+		this.setState({
+			isDateTimePickerVisible: false,
+			dateType: null,
+		});
+	}
+
+	_handleDatePicked (date: any) {
+		console.log('A date has been picked: ', date);
+		if (this.state.dateType === 'arrival') {
+			this.setState({
+				arrivalDate: date,
+				isDateTimePickerVisible: false,
+				dateType: null,
+			})
+		} else if (this.state.dateType === 'departure') {
+			this.setState({
+				departureDate: date,
+				isDateTimePickerVisible: false,
+				dateType: null,
+			})
+		}
 	}
 
 	_createReservation () {
@@ -56,11 +105,26 @@ class App extends React.PureComponent<Props, State> {
         return (
             <View style={AppStyle.container}>
 
+				<DateTimePicker
+					isVisible={this.state.isDateTimePickerVisible}
+					onConfirm={this._handleDatePicked.bind(this)}
+					onCancel={this._hideDateTimePicker.bind(this)}
+				/>
+
+				<TextInput
+					id={'arrivalDate'}
+					style={[AppStyle.arrivalDate, {opacity: this.state.firstName.length ? 1 : $PlaceholderOpacity}]}
+					placeholder="Arrival date"
+					placeholderTextColor="#ccc"
+					onFocus={(e) => this._showDateTimePicker(e, 'arrival')}
+					value={this.state.arrivalDate}
+				/>
+
 				<TextInput
 					id={'firstNameInput'}
 					style={[AppStyle.firstName, {opacity: this.state.firstName.length ? 1 : $PlaceholderOpacity}]}
 					placeholder="First name"
-					placeholderTextColor="#CCC"
+					placeholderTextColor="#ccc"
 					onChangeText={(text) => {
 						let name = _.toLower(text);
 						this.setState({
@@ -74,7 +138,7 @@ class App extends React.PureComponent<Props, State> {
 					id={'lastNameInput'}
 					style={[AppStyle.lastName, {opacity: this.state.lastName.length ? 1 : $PlaceholderOpacity}]}
 					placeholder="Last name"
-					placeholderTextColor="#CCC"
+					placeholderTextColor="#ccc"
 					onChangeText={(text) => {
 						let name = _.toLower(text);
 						this.setState({
