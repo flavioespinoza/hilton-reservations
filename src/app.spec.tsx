@@ -3,12 +3,12 @@ import App from "./app";
 import renderer from "react-test-renderer";
 
 describe("App", () => {
-    it("should render", () => {
-        const tree = renderer
-            .create(<App />)
+  it("should render", () => {
+    const tree = renderer
+      .create(<App />)
 
-            .toJSON();
+      .toJSON();
 
-        expect(tree).toMatchSnapshot();
-    });
+    expect(tree).toMatchSnapshot();
+  });
 });
