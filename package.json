@@ -6,7 +6,6 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "start:android": "react-native run-android",
     "start:ios": "react-native run-ios",
-    "precommit": "lint-staged",
     "ts": "./node_modules/.bin/tsc --watch --pretty",
     "tsc": "node_modules/.bin/tsc",
     "test": "jest"
@@ -57,10 +56,5 @@
       "<rootDir>/node_modules/"
     ],
     "cacheDirectory": ".jest/cache"
-  },
-  "lint-staged": {
-    "{src,test}/**/*.ts*": [
-      "prettier --write"
-    ]
   }
 }
