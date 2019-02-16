@@ -611,6 +611,10 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@types/lodash@^4.14.121":
+  version "4.14.121"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.121.tgz#9327e20d49b95fc2bf983fc2f045b2c6effc80b9"
+
 "@types/prop-types@*":
   version "15.5.9"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.9.tgz#f2d14df87b0739041bc53a7d75e3d77d726a3ec0"
@@ -4563,7 +4567,7 @@ prompts@^2.0.1:
     kleur "^3.0.2"
     sisteransi "^1.0.0"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.2:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -4642,6 +4646,12 @@ react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1:
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
 
+react-native-animatable@^1.2.4:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.1.tgz#f004a7e9de6838d0fbf210d642593cff7affd9ef"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-elements@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.0.0.tgz#95bc194f61ec4658d8dbd977524f8c4fd3ada136"
@@ -4653,6 +4663,20 @@ react-native-elements@^1.0.0:
     prop-types "^15.5.8"
     react-native-ratings "^6.3.0"
     react-native-status-bar-height "^2.2.0"
+
+react-native-modal-datetime-picker@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-6.0.0.tgz#8018994524122ad48fd6bc66f26f623c75a49fb3"
+  dependencies:
+    prop-types "^15.6.1"
+    react-native-modal "^6.2.0"
+
+react-native-modal@^6.2.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-6.5.0.tgz#46220b2289a41597d344c1db17454611b426a758"
+  dependencies:
+    prop-types "^15.6.1"
+    react-native-animatable "^1.2.4"
 
 react-native-ratings@^6.3.0:
   version "6.3.0"
