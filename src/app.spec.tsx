@@ -1,14 +1,14 @@
-import React from "react";
-import App from "./app";
-import renderer from "react-test-renderer";
+import React from 'react'
+import App from './app'
+import renderer from 'react-test-renderer'
 
-describe("App", () => {
-  it("should render", () => {
-    const tree = renderer
-      .create(<App />)
+describe('App', () => {
+    it('should render', () => {
+        const tree = renderer
+            .create(<App />)
 
-      .toJSON();
+            .toJSON()
 
-    expect(tree).toMatchSnapshot();
-  });
-});
+        expect(tree).toMatchSnapshot()
+    })
+})
