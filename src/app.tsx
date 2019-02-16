@@ -1,28 +1,12 @@
 import * as React from "react";
-import {
-  Platform,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity
-} from "react-native";
-
+import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
-
+import { Button } from "react-native-elements";
+import { AppStyle } from "./app.style";
 import _ from "lodash";
 
-import { Button } from "react-native-elements";
-
-import { AppStyle } from "./app.style";
-
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
-
 type Props = {};
+
 type State = {
   arrivalDate: string;
   departureDate: string;
@@ -44,8 +28,6 @@ function formatDate(inputFormat: Date) {
 
   return [pad(d.getMonth() + 1), pad(d.getDate()), d.getFullYear()].join("/");
 }
-
-let $PlaceholderOpacity = 0.7;
 
 class App extends React.PureComponent<Props, State> {
   constructor(props: any) {
@@ -159,7 +141,7 @@ class App extends React.PureComponent<Props, State> {
           ref={"firstNameTextInput"}
           style={[
             AppStyle.firstName,
-            { opacity: this.state.firstName.length ? 1 : $PlaceholderOpacity }
+            { opacity: this.state.firstName.length ? 1 : 0.6 }
           ]}
           placeholder="First name"
           placeholderTextColor="#ccc"
@@ -176,7 +158,7 @@ class App extends React.PureComponent<Props, State> {
           ref={"lastNameTextInput"}
           style={[
             AppStyle.lastName,
-            { opacity: this.state.lastName.length ? 1 : $PlaceholderOpacity }
+            { opacity: this.state.lastName.length ? 1 : 0.6 }
           ]}
           placeholder="Last name"
           placeholderTextColor="#ccc"
