@@ -79,7 +79,6 @@ class App extends React.PureComponent<Props, State> {
         })
     }
     
-
     private _setDepartureDate = (date: Date): void => {
         let departure = _formatDate(date)
         this.setState({
@@ -202,19 +201,6 @@ class App extends React.PureComponent<Props, State> {
                     style={AppStyle.btn}
                     onPress={this._createReservation}
                 />
-
-                <TouchableOpacity
-                    onPress={() => {
-                        this._showAlert('I am an Awesome Alert', 'Test')
-                    }}
-                >
-                    <View style={AppStyle.btn}>
-                        <Text>Try me!</Text>
-                    </View>
-                </TouchableOpacity>
-
-                <Text style={AppStyle.welcome}>{this.state.text_1}</Text>
-                <Text style={AppStyle.welcome}>{this.state.text_2}</Text>
 
                 {this.state.name ? (
                     <View>
