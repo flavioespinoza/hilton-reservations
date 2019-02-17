@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { View, Text, TextInput } from 'react-native'
-import DateTimePicker from 'react-native-modal-datetime-picker'
+import { View, TextInput, Text } from 'react-native'
+import { SelectOption } from './components/SelectOption/SelectOption'
 import { DateSelection } from './components/DateSelection/DateSelection'
 import { Button } from 'react-native-elements'
 import { AppStyle } from './app.style'
-import _ from 'lodash'
 import _formatDate from './utils/formatDate'
+import _ from 'lodash'
 
 interface Props {}
 
@@ -22,6 +22,9 @@ interface State {
 }
 
 class App extends React.PureComponent<Props, State> {
+
+    private inputRef = React.createRef<TextInput>()
+
     constructor(props: Props) {
         super(props)
 
@@ -35,47 +38,6 @@ class App extends React.PureComponent<Props, State> {
             reservationId: '',
             isDateTimePickerVisible: false,
             dateType: null
-        }
-    }
-
-    private _showDateTimePicker = (type: string): void => {
-        if (type === 'arrival') {
-            this.setState({
-                isDateTimePickerVisible: true,
-                dateType: 'arrival'
-            })
-        } else if (type === 'departure') {
-            this.setState({
-                isDateTimePickerVisible: true,
-                dateType: 'departure'
-            })
-        }
-    }
-
-    private _hideDateTimePicker = (): void => {
-        this.setState({
-            isDateTimePickerVisible: false,
-            dateType: null
-        })
-    }
-
-    private _handleDatePicked = (date: Date): void => {
-        if (this.state.dateType === 'arrival') {
-            //TODO: CHECK DATE SEQUENCE
-            let arrival = _formatDate(date)
-            this.setState({
-                arrivalDate: arrival,
-                isDateTimePickerVisible: false,
-                dateType: null
-            })
-        } else if (this.state.dateType === 'departure') {
-            //TODO: CHECK DATE SEQUENCE
-            let departure = _formatDate(date)
-            this.setState({
-                departureDate: departure,
-                isDateTimePickerVisible: false,
-                dateType: null
-            })
         }
     }
 
@@ -100,6 +62,9 @@ class App extends React.PureComponent<Props, State> {
     }
 
     private _createReservation = (): void => {
+
+		console.log('TCL: App -> this.inputRef', this.inputRef)
+        
         if (this.state.firstName.length > 0 && this.state.lastName.length > 0) {
             let name = `${this.state.firstName} ${this.state.lastName}`
             this.setState({
@@ -108,9 +73,21 @@ class App extends React.PureComponent<Props, State> {
         }
     }
 
+    private _handleHotelSelection = (selection: string): void => {
+        this.setState({
+            hotel: selection
+        })
+    }
+
     render() {
         return (
             <View style={AppStyle.container}>
+
+                <SelectOption 
+                    placeholder={'Select a hotel...'} 
+                    _handler={this._handleHotelSelection} 
+                />
+
                 <DateSelection
                     placeholder={'Arrival date'}
                     dateType={'arrival'}
@@ -126,7 +103,7 @@ class App extends React.PureComponent<Props, State> {
                 />
 
                 <TextInput
-                    ref={'firstNameTextInput'}
+                    ref={'firstNameInput'}
                     style={[AppStyle.firstName, { opacity: this.state.firstName.length ? 1 : 0.6 }]}
                     placeholder='First name'
                     placeholderTextColor='#ccc'
@@ -140,7 +117,7 @@ class App extends React.PureComponent<Props, State> {
                 />
 
                 <TextInput
-                    ref={'lastNameTextInput'}
+                    ref={'lastNameInput'}
                     style={[AppStyle.lastName, { opacity: this.state.lastName.length ? 1 : 0.6 }]}
                     placeholder='Last name'
                     placeholderTextColor='#ccc'

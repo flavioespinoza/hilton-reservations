@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-        buildToolsVersion = "28.0.2"
+        buildToolsVersion = "28.0.3"
         minSdkVersion = 16
         compileSdkVersion = 28
         targetSdkVersion = 27
@@ -30,7 +30,7 @@ allprojects {
             url "$rootDir/../node_modules/react-native/android"
         }
     }
-}
+}˝
 
 
 task wrapper(type: Wrapper) {

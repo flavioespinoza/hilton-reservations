@@ -55,20 +55,17 @@ class DateSelection extends React.PureComponent<Props, State> {
                 />
 
                 <TouchableOpacity
-                    style={[
-                        Style.dateSelectionTouchable,
-                        { opacity: this.props.dateString.length > 0 ? 1 : 0.6 }
-                    ]}
+                    style={Style.dateSelectionTouchable}
                     onPress={() => {
                         this._showDateTimePicker(this.props.dateType)
                     }}
                 >
-                    <Text style={Style.dateInput}>
+                    <Text style={[Style.dateInput, { opacity: this.props.dateString.length > 0 ? 1 : 0.6 }]}>
                         {this.props.dateString.length > 0 ? (
                             this.props.dateString
                         ) : (
-                                <Text style={Style.placeholder}>{this.props.placeholder}</Text>
-                            )}
+                            <Text style={Style.placeholder}>{this.props.placeholder}</Text>
+                        )}
                     </Text>
                 </TouchableOpacity>
             </View>
