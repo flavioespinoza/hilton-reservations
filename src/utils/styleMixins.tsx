@@ -25,3 +25,29 @@ export const $TextInput = {
     marginTop: 12,
     padding: 4
 }
+
+export const $Device = {
+    selection: {
+        ios: {
+            width: '100%',
+            fontSize: 16,
+            paddingVertical: 12,
+            paddingHorizontal: 10,
+            borderWidth: 1,
+            borderColor: 'gray',
+            borderRadius: 0,
+            color: 'black',
+            paddingRight: 30 // to ensure the text is never behind the icon
+        },
+        android: {
+            fontSize: 16,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+            borderWidth: 2,
+            borderColor: 'red',
+            borderRadius: 8,
+            color: 'black',
+            paddingRight: 30 // to ensure the text is never behind the icon
+        } 
+    }
+}

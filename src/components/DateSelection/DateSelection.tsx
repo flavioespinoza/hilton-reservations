@@ -6,7 +6,7 @@ import _formatDate from '../../utils/formatDate'
 
 interface Props {
     dateType: string
-    dateString: string
+    dateString: string | any
     placeholder: string
     _handler: any
 }
@@ -60,8 +60,8 @@ class DateSelection extends React.PureComponent<Props, State> {
                         this._showDateTimePicker(this.props.dateType)
                     }}
                 >
-                    <Text style={[Style.dateInput, { opacity: this.props.dateString.length > 0 ? 1 : 0.6 }]}>
-                        {this.props.dateString.length > 0 ? (
+                    <Text style={[Style.dateInput, { opacity: this.props.dateString ? 1 : 0.6 }]}>
+                        {this.props.dateString ? (
                             this.props.dateString
                         ) : (
                             <Text style={Style.placeholder}>{this.props.placeholder}</Text>

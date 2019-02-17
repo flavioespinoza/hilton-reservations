@@ -1,22 +1,25 @@
 import { StyleSheet } from 'react-native'
-import { $DateInput } from '../../utils/styleMixins'
+import { $Device } from '../../utils/styleMixins'
+
+ const StyleDeviceSpecific = StyleSheet.create({
+    inputIOS: {
+        ...$Device.selection.ios
+    },
+    inputAndroid: {
+        ...$Device.selection.android
+    }
+})
 
 const Style = StyleSheet.create({
     view: {
         width: '100%',
-        height: 50
-    },
-    dateSelectionTouchable: {
-        height: 40,
-        width: '100%',
-        marginTop: 12
-    },
-    dateInput: {
-        ...$DateInput
+        height: 40
     },
     placeholder: {
         color: '#ccc'
     }
 })
 
-export { Style }
+
+
+export { Style, StyleDeviceSpecific }

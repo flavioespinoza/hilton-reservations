@@ -10,32 +10,35 @@ import _ from 'lodash'
 interface Props {}
 
 interface State {
-    arrivalDate: string
-    departureDate: string
-    hotel: string
-    firstName: string
-    lastName: string
-    name: string
-    reservationId: string
+    arrivalDate: string | any
+    departureDate: string | any
+    hotel: string | undefined
+    firstName: string | undefined
+    lastName: string | undefined
+    name: string | undefined
+    reservationId: string | undefined
     isDateTimePickerVisible: boolean
     dateType: any
 }
 
 class App extends React.PureComponent<Props, State> {
 
-    private inputRef = React.createRef<TextInput>()
+    private inputRefs = {
+        firstNameTextInput: React.createRef<TextInput>(),
+        lastNameTextInput: React.createRef<TextInput>()
+    }
 
     constructor(props: Props) {
         super(props)
 
         this.state = {
-            arrivalDate: '',
-            departureDate: '',
-            hotel: '',
-            firstName: '',
-            lastName: '',
-            name: '',
-            reservationId: '',
+            arrivalDate: undefined,
+            departureDate: undefined,
+            hotel: undefined,
+            firstName: undefined,
+            lastName: undefined,
+            name: undefined,
+            reservationId: undefined,
             isDateTimePickerVisible: false,
             dateType: null
         }
@@ -62,12 +65,15 @@ class App extends React.PureComponent<Props, State> {
     }
 
     private _createReservation = (): void => {
-
-		console.log('TCL: App -> this.inputRef', this.inputRef)
         
-        if (this.state.firstName.length > 0 && this.state.lastName.length > 0) {
+        this.inputRefs.firstNameTextInput.current!.blur()
+        this.inputRefs.lastNameTextInput.current!.blur()
+
+        if (this.state.firstName && this.state.lastName) {
             let name = `${this.state.firstName} ${this.state.lastName}`
             this.setState({
+                firstName: undefined,
+                lastName: undefined,
                 name: name
             })
         }
@@ -84,8 +90,9 @@ class App extends React.PureComponent<Props, State> {
             <View style={AppStyle.container}>
 
                 <SelectOption 
-                    placeholder={'Select a hotel...'} 
                     _handler={this._handleHotelSelection} 
+                    placeholder={'Select a hotel...'} 
+                    currentSelection={this.state.hotel}
                 />
 
                 <DateSelection
@@ -103,8 +110,8 @@ class App extends React.PureComponent<Props, State> {
                 />
 
                 <TextInput
-                    ref={'firstNameInput'}
-                    style={[AppStyle.firstName, { opacity: this.state.firstName.length ? 1 : 0.6 }]}
+                    ref={this.inputRefs.firstNameTextInput}
+                    style={[AppStyle.firstName, { opacity: this.state.firstName ? 1 : 0.6 }]}
                     placeholder='First name'
                     placeholderTextColor='#ccc'
                     onChangeText={(text: string) => {
@@ -117,8 +124,8 @@ class App extends React.PureComponent<Props, State> {
                 />
 
                 <TextInput
-                    ref={'lastNameInput'}
-                    style={[AppStyle.lastName, { opacity: this.state.lastName.length ? 1 : 0.6 }]}
+                    ref={this.inputRefs.lastNameTextInput}
+                    style={[AppStyle.lastName, { opacity: this.state.lastName ? 1 : 0.6 }]}
                     placeholder='Last name'
                     placeholderTextColor='#ccc'
                     onChangeText={(text: string) => {
@@ -137,7 +144,7 @@ class App extends React.PureComponent<Props, State> {
                     onPress={this._createReservation}
                 />
 
-                {this.state.name.length > 0 ? (
+                {this.state.name ? (
                     <View>
                         <Text style={AppStyle.welcome}>{this.state.name}</Text>
                         <Text style={AppStyle.welcome}>{this.state.arrivalDate}</Text>
