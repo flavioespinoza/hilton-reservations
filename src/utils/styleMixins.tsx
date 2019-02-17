@@ -51,3 +51,17 @@ export const $Device = {
         } 
     }
 }
+
+export const $PrimaryColor = '#4388D6'
+
+export const $Color = {
+    primary: {
+        bg: {
+            backgroundColor: $PrimaryColor
+        },
+        text: {
+            color: $PrimaryColor
+        },
+        color: $PrimaryColor
+    }
+}

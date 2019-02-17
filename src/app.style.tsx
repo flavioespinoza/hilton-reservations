@@ -1,8 +1,13 @@
 import * as React from 'react'
 import { StyleSheet } from 'react-native'
-import { $ContainerBase, $DateInput, $TextInput } from './utils/styleMixins'
+import { $ContainerBase, $DateInput, $TextInput, $Color } from './utils/styleMixins'
 
 const AppStyle = StyleSheet.create({
+    btnPrimary: {
+        ...$Color.primary.bg, 
+        color: '#fff',
+        borderRadius: 2
+    },
     placeholderText: {
         color: '#ccc'
     },
