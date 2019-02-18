@@ -1,3 +1,4 @@
+/// <reference path='../../index.d.ts' />
 import * as React from 'react'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { SelectOption } from '../../components/SelectOption/SelectOption'

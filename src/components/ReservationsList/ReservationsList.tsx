@@ -5,7 +5,6 @@ import { ListItem } from 'react-native-elements'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import _ from 'lodash'
 
-
 interface Props {}
 
 interface State {
