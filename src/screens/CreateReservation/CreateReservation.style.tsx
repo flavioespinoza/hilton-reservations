@@ -1,8 +1,7 @@
-import * as React from 'react'
 import { StyleSheet } from 'react-native'
-import { $ContainerBase, $DateInput, $TextInput, $Color } from './utils/styleMixins'
+import { $DateInput, $TextInput, $Color } from '../../utils/styleMixins'
 
-const AppStyle = StyleSheet.create({
+const Style = StyleSheet.create({
     btnPrimary: {
         ...$Color.primary.bg, 
         color: '#fff',
@@ -60,4 +59,4 @@ const AppStyle = StyleSheet.create({
     }
 })
 
-export { AppStyle }
+export { Style }
