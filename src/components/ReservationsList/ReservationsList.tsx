@@ -5,10 +5,11 @@ import { ListItem } from 'react-native-elements'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import _ from 'lodash'
 
-interface Props {}
+interface Props {
+    items: ReadonlyArray<any> | any
+}
 
 interface State {
-    items: [] | any
     showAlert: boolean
     alertMessage: string | undefined
     alertTitle: string | undefined
@@ -43,7 +44,6 @@ class ReservationsList extends React.PureComponent<Props, State> {
         super(props)
 
         this.state = {
-            items: list,
             showAlert: false,
             alertMessage: undefined,
             alertTitle: undefined
@@ -53,9 +53,10 @@ class ReservationsList extends React.PureComponent<Props, State> {
     private _keyExtractor = (item: any, index: any) => _.toString(index)
 
     private _renderItem = ({ item }: any) => (
+
         <ListItem
             containerStyle={{ borderBottomColor: '#ccc', borderBottomWidth: 1 }}
-            title={item.name}
+            title={'Reservation'}
             subtitle={item.hotelName}
             onPress={() => {
                 this._onPress({ item })
@@ -82,10 +83,15 @@ class ReservationsList extends React.PureComponent<Props, State> {
     }
 
     public render(): JSX.Element {
+
+        const { items } = this.props
+
+        const list_items = JSON.parse(items)
+
         return (
             <View style={Style.container}>
                 
-                <FlatList keyExtractor={this._keyExtractor} data={this.state.items} renderItem={this._renderItem} />
+                <Text>{list_items}</Text>
 
                 <AwesomeAlert
                     alertContainerStyle={{ borderRadius: 2 }}
