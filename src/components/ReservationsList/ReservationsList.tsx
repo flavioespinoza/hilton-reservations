@@ -1,6 +1,9 @@
-import React, { Component } from "react";
-import { ScrollView, FlatList, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import React, { Component } from 'react'
 import { Style } from './ReservationsList.style'
+import { ScrollView, FlatList, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { ListItem } from 'react-native-elements'
+import AwesomeAlert from 'react-native-awesome-alerts'
+import _ from 'lodash'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -15,27 +18,33 @@ const RESERVATIONS_QUERY = gql`
         }
     }
 `
-
 const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
     const { loading, reservations } = data
 
-    if (loading)
+    const _keyExtractor = (item: any, index: any) => _.toString(index)
+
+    const _renderItem = ({ item }: any) => (
+        <ListItem
+            containerStyle={{ borderBottomColor: '#ccc', borderBottomWidth: 1 }}
+            title={item.name}
+            subtitle={item.hotelName}
+            rightTitle={item.arrivalDate}
+            rightSubtitle={item.departureDate}
+            
+        />
+    )
+
+    if (loading) {
         return (
             <View>
                 <Text>loading...</Text>
             </View>
         )
+    }
 
     return (
         <View style={Style.container}>
-            {reservations.map(({ id, hotelName, arrivalDate, departureDate, name }: any) => (
-                <View key={id} style={{width: '100%', backgroundColor: 'gainsboro', marginBottom: 12}}>
-                    <Text style={Style.welcome}>{hotelName}</Text>
-                    <Text style={Style.welcome}>{arrivalDate}</Text>
-                    <Text style={Style.welcome}>{departureDate}</Text>
-                    <Text style={Style.welcome}>{name}</Text>
-                </View>
-            ))}
+            <FlatList keyExtractor={_keyExtractor} data={reservations} renderItem={_renderItem} />
         </View>
     )
 })

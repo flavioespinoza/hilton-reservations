@@ -18,44 +18,6 @@ const client = new ApolloClient({
     cache: new InMemoryCache().restore({})
 })
 
-const RESERVATIONS_QUERY = gql`
-    {
-        reservations {
-            id
-            hotelName
-            arrivalDate
-            departureDate
-            name
-        }
-    }
-`
-
-// ReservationsList Component
-const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
-    const { loading, reservations } = data
-
-    if (loading)
-        return (
-            <View>
-                <Text>loading...</Text>
-            </View>
-        )
-
-    return (
-        <View style={AppStyle.container}>
-            {reservations.map(({ id, hotelName, arrivalDate, departureDate, name }: any) => (
-                <View key={id} style={{width: '100%', backgroundColor: 'gainsboro', marginBottom: 12}}>
-                    <Text style={AppStyle.welcome}>{hotelName}</Text>
-                    <Text style={AppStyle.welcome}>{arrivalDate}</Text>
-                    <Text style={AppStyle.welcome}>{departureDate}</Text>
-                    <Text style={AppStyle.welcome}>{name}</Text>
-                </View>
-            ))}
-        </View>
-    )
-})
-
-
 export default class App extends React.Component {
     render() {
         return (
