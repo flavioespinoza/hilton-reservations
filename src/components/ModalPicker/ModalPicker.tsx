@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { View, Modal, Text, ScrollView, TouchableOpacity } from 'react-native'
-import styles from './style'
 import { Style } from './ModalPicker.style'
 import Chance from 'chance'
 
@@ -33,7 +32,7 @@ interface State {
     selected: string | undefined | any
 }
 
-class PickerModal extends React.PureComponent<Props, State> {
+class ModalPicker extends React.PureComponent<Props, State> {
     constructor(props: Props) {
         super(props)
 
@@ -76,8 +75,8 @@ class PickerModal extends React.PureComponent<Props, State> {
 
     _renderSection = (section: any) => {
         return (
-            <View key={chance.guid()} style={[styles.sectionStyle, this.props.sectionStyle]}>
-                <Text style={[styles.sectionTextStyle, this.props.sectionTextStyle]}>{section.label}</Text>
+            <View key={chance.guid()} style={[Style.sectionStyle, this.props.sectionStyle]}>
+                <Text style={[Style.sectionTextStyle, this.props.sectionTextStyle]}>{section.label}</Text>
             </View>
         )
     }
@@ -85,8 +84,8 @@ class PickerModal extends React.PureComponent<Props, State> {
     _renderOption = (option: any) => {
         return (
             <TouchableOpacity key={chance.guid()} onPress={() => this._onChangeItem(option)}>
-                <View style={[styles.optionStyle, this.props.optionStyle]}>
-                    <Text style={[styles.optionTextStyle, this.props.optionTextStyle]}>{option.label}</Text>
+                <View style={[Style.optionStyle, this.props.optionStyle]}>
+                    <Text style={[Style.optionTextStyle, this.props.optionTextStyle]}>{option.label}</Text>
                 </View>
             </TouchableOpacity>
         )
@@ -102,16 +101,16 @@ class PickerModal extends React.PureComponent<Props, State> {
         })
 
         return (
-            <View style={[styles.overlayStyle, this.props.overlayStyle]} key={chance.guid()}>
-                <View style={styles.optionContainer}>
+            <View style={[Style.overlayStyle, this.props.overlayStyle]} key={chance.guid()}>
+                <View style={Style.optionContainer}>
                     <ScrollView keyboardShouldPersistTaps={'always'}>
                         <View style={{ paddingHorizontal: 10 }}>{options}</View>
                     </ScrollView>
                 </View>
-                <View style={styles.cancelContainer}>
+                <View style={Style.cancelContainer}>
                     <TouchableOpacity onPress={this._close}>
-                        <View style={[styles.cancelStyle, this.props.cancelStyle]}>
-                            <Text style={[styles.cancelTextStyle, this.props.cancelTextStyle]}>
+                        <View style={[Style.cancelStyle, this.props.cancelStyle]}>
+                            <Text style={[Style.cancelTextStyle, this.props.cancelTextStyle]}>
                                 {this.state.cancelText}
                             </Text>
                         </View>
@@ -126,8 +125,8 @@ class PickerModal extends React.PureComponent<Props, State> {
             return this.props.children
         }
         return (
-            <View style={[styles.selectStyle, this.props.selectStyle]}>
-                <Text style={[styles.selectTextStyle, this.props.selectTextStyle]}>{this.state.selected}</Text>
+            <View style={[Style.selectStyle, this.props.selectStyle]}>
+                <Text style={[Style.selectTextStyle, this.props.selectTextStyle]}>{this.state.selected}</Text>
             </View>
         )
     }
@@ -159,4 +158,4 @@ class PickerModal extends React.PureComponent<Props, State> {
     }
 }
 
-export default PickerModal
+export default ModalPicker

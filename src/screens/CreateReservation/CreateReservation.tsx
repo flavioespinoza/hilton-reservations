@@ -7,7 +7,7 @@ import { Style } from './CreateReservation.style'
 import _formatDate from '../../utils/formatDate'
 import _ from 'lodash'
 import AwesomeAlert from 'react-native-awesome-alerts'
-import PickerModal from '../../components/ModalPicker/PickerModal'
+import PickerModal from '../../components/ModalPicker/ModalPicker'
 
 interface Props {}
 
