@@ -1,21 +1,25 @@
- ## Start Fresh
+## Start Fresh
 
- ##### Kill All Android Servers
- ```bash {.copy-clip}
+##### Kill All Android Servers
+
+```bash {.copy-clip}
 adb kill-server
- ```
+```
 
- ##### List Android Devices
- ```bash {.copy-clip}
+##### List Android Devices
+
+```bash {.copy-clip}
 adb devices
- ```
+```
 
 ##### Android Device ID
+
 ```bash {.copy-clip}
 192.168.56.101:5555
 ```
 
 ##### Try Resetting
+
 ```bash {.copy-clip}
 # Remove Android and ios build folders
 sudo rm -r android/
@@ -28,18 +32,23 @@ sudo rm -r node_modules/
 sudo rm -r package-lock.json
 sudo rm -r yarn.lock
 ```
+
 > Try with yarn
+
 ```bash {.copy-clip}
 # Install Node modules
 yarn install
 ```
+
 > You need the React-Native Client to upgrade React-Native
 
 ```bash {.copy-clip}
 # Install client
 npm install -g react-native-cli
 ```
-> __Make sure in your package.json file__ that `"react"` and `"react-native"` are under you __dependencies__.  If they are under __devDependencies__ move them.
+
+> **Make sure in your package.json file** that `"react"` and `"react-native"` are under you **dependencies**. If they are under **devDependencies** move them.
+
 ```json
 # In you package.json file under "dependencies"
 "dependencies": {
@@ -47,7 +56,9 @@ npm install -g react-native-cli
         "react-native": "^0.58.4"
 }
 ```
+
 > Upgrade and run
+
 ```bash {.copy-clip}
 # Update React-Native
 react-native upgrade
@@ -56,10 +67,12 @@ react-native upgrade
 
 > "DO NOTE USE" react-native-git-upgrade
 
-> "You need to use" react-native upgrade 
+> "You need to use" react-native upgrade
 > "to rebuild the" `android` "and" `ios` "folders".
 ```
+
 > Run new Android build
+
 ```bash {.copy-clip}
 # Run Android
 react-native run-android
@@ -70,6 +83,11 @@ react-native run-android
 ## Load last successfull Android build
 
 ##### Run Android by Device ID
+
 ```bash {.copy-clip}
 react-native run-android --deviceId 192.168.56.101:5555
+```
+
+```bash {.copy-clip}
+
 ```

@@ -1,4 +1,4 @@
-export default function _getHotelList() {
+function _getHotelList() {
     return [
         {
             label: 'Hilton NYC',
@@ -22,3 +22,5 @@ export default function _getHotelList() {
         }
     ]
 }
+
+export { _getHotelList }
