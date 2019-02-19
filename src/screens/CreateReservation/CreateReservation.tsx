@@ -32,13 +32,13 @@ interface State {
     opacityOfOtherItems: number
     textInputValue: string
     hotelItems: [] | any
-    submit: boolean,
-	createReservationQuery: string | undefined
-	confirm_arrivalDate: string | undefined
-	confirm_departureDate: string | undefined
-	confirm_hotelName: string | undefined
-	confirm_id: string | undefined
-	confirm_name: string | undefined
+    submit: boolean
+    createReservationQuery: string | undefined
+    confirm_arrivalDate: string | undefined
+    confirm_departureDate: string | undefined
+    confirm_hotelName: string | undefined
+    confirm_id: string | undefined
+    confirm_name: string | undefined
 }
 
 class CreateReservation extends React.PureComponent<Props, State> {
@@ -70,12 +70,12 @@ class CreateReservation extends React.PureComponent<Props, State> {
             textInputValue: 'hello textInputValue',
             hotelItems: [],
             submit: false,
-			createReservationQuery: undefined,
-			confirm_arrivalDate: undefined,
-			confirm_departureDate: undefined,
-			confirm_hotelName: undefined,
-			confirm_id: undefined,
-			confirm_name: undefined
+            createReservationQuery: undefined,
+            confirm_arrivalDate: undefined,
+            confirm_departureDate: undefined,
+            confirm_hotelName: undefined,
+            confirm_id: undefined,
+            confirm_name: undefined
         }
     }
 
@@ -120,11 +120,11 @@ class CreateReservation extends React.PureComponent<Props, State> {
         })
     }
 
-	private _handleHotelSelection = (item: any): void => {
-		this.setState({
-			hotel: item.label
-		})
-	}
+    private _handleHotelSelection = (item: any): void => {
+        this.setState({
+            hotel: item.label
+        })
+    }
 
     private _handleDate = (date: Date, type: string): void => {
         if (type === 'arrival') {
@@ -160,15 +160,20 @@ class CreateReservation extends React.PureComponent<Props, State> {
         }
     }
 
-	private _sendReservation = (firstName: string, lastName: string, hotelName: string, arrivalDate: string, departureDate: string): void => {
+    private _sendReservation = (
+        firstName: string,
+        lastName: string,
+        hotelName: string,
+        arrivalDate: string,
+        departureDate: string
+    ): void => {
+        const _endpoint = 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
 
-		const _endpoint = 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
-
-		axios({
-			url: _endpoint,
-			method: 'post',
-			data: {
-				query: `
+        axios({
+            url: _endpoint,
+            method: 'post',
+            data: {
+                query: `
 					mutation {
 						createReservation(
 							data: {
@@ -186,66 +191,65 @@ class CreateReservation extends React.PureComponent<Props, State> {
 						}
 					}
 			`
-			}
-		}).then((res) => {
-			let reservation = res.data.data.createReservation
-			let confirmation = {
-				confirm_arrivalDate: reservation.arrivalDate,
-				confirm_departureDate: reservation.departureDate,
-				confirm_hotelName: reservation.hotelName,
-				confirm_id: reservation.id,
-				confirm_name: reservation.name
-			}
-			this.setState(confirmation)
-			this._clearState()
-
-		}).catch((err) => {
-			console.error(err)
-			alert(err.message)
-		})
-
-	}
-
-	private _createReservation = (): void => {
-
-    	if (this.state.firstName && this.state.lastName && this.state.hotel && this.state.arrivalDate && this.state.departureDate) {
-
-			this.inputRefs.firstNameTextInput.current!.blur()
-			this.inputRefs.lastNameTextInput.current!.blur()
-
-			let _firstName = this.state.firstName
-			let _lastName = this.state.lastName
-			let _hotelName = this.state.hotel
-			let _arrivalDate = this.state.arrivalDate
-			let _departureDate = this.state.departureDate
-
-			this._sendReservation(_firstName, _lastName, _hotelName, _arrivalDate, _departureDate)
-
-		} else {
-    		alert('All fields are required!')
-		}
-
+            }
+        })
+            .then(res => {
+                let reservation = res.data.data.createReservation
+                let confirmation = {
+                    confirm_arrivalDate: reservation.arrivalDate,
+                    confirm_departureDate: reservation.departureDate,
+                    confirm_hotelName: reservation.hotelName,
+                    confirm_id: reservation.id,
+                    confirm_name: reservation.name
+                }
+                this.setState(confirmation)
+                this._clearState()
+            })
+            .catch(err => {
+                console.error(err)
+                alert(err.message)
+            })
     }
 
-	private _clearState = (): void => {
+    private _createReservation = (): void => {
+        if (
+            this.state.firstName &&
+            this.state.lastName &&
+            this.state.hotel &&
+            this.state.arrivalDate &&
+            this.state.departureDate
+        ) {
+            this.inputRefs.firstNameTextInput.current!.blur()
+            this.inputRefs.lastNameTextInput.current!.blur()
 
-		this.inputRefs.firstNameTextInput.current!.clear()
-		this.inputRefs.lastNameTextInput.current!.clear()
+            let _firstName = this.state.firstName
+            let _lastName = this.state.lastName
+            let _hotelName = this.state.hotel
+            let _arrivalDate = this.state.arrivalDate
+            let _departureDate = this.state.departureDate
 
-		this.setState({
-			name: undefined,
-			firstName: undefined,
-			lastName: undefined,
-			hotel: 'Select hotel',
-			arrivalDate: undefined,
-			departureDate: undefined,
-			submit: false
-		})
+            this._sendReservation(_firstName, _lastName, _hotelName, _arrivalDate, _departureDate)
+        } else {
+            alert('All fields are required!')
+        }
+    }
 
-	}
+    private _clearState = (): void => {
+        this.inputRefs.firstNameTextInput.current!.clear()
+        this.inputRefs.lastNameTextInput.current!.clear()
+
+        this.setState({
+            name: undefined,
+            firstName: undefined,
+            lastName: undefined,
+            hotel: 'Select hotel',
+            arrivalDate: undefined,
+            departureDate: undefined,
+            submit: false
+        })
+    }
 
     render() {
-
         return (
             <View style={Style.container}>
                 <PickerModal
