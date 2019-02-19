@@ -32,11 +32,11 @@ const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ padding: 6, width: '50%', height: 40, backgroundColor: 'powderblue' }}>
                         <Text>{item.hotelName}</Text>
-                        <Text style={{fontSize: 11, color: 'gray'}}>{item.id}</Text>
+                        <Text style={{ fontSize: 11, color: 'gray' }}>{item.id}</Text>
                     </View>
                     <View style={{ padding: 6, width: '50%', height: 40, backgroundColor: 'skyblue' }}>
-                        <Text style={{fontSize: 11}}>Arrival: {item.arrivalDate}</Text>
-                        <Text style={{fontSize: 11}}>Depart: {item.arrivalDate}</Text>
+                        <Text style={{ fontSize: 11 }}>Arrival: {item.arrivalDate}</Text>
+                        <Text style={{ fontSize: 11 }}>Depart: {item.arrivalDate}</Text>
                     </View>
                 </View>
             }
