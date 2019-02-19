@@ -8,6 +8,7 @@ import _formatDate from '../../utils/formatDate'
 import _ from 'lodash'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import PickerModal from '../../components/ModalPicker/ModalPicker'
+import { _getHotelList } from '../../api/getHotelList'
 
 interface Props {}
 
@@ -59,29 +60,15 @@ class CreateReservation extends React.PureComponent<Props, State> {
             pickerOpacity: 0,
             opacityOfOtherItems: 1,
             textInputValue: 'hello textInputValue',
-            hotelItems: [
-                {
-                    label: 'Hilton NYC',
-                    value: 'Hilton NYC'
-                },
-                {
-                    label: 'Hilton Brooklyn New York',
-                    value: 'Hilton Brooklyn New York'
-                },
-                {
-                    label: 'Hilton LAX',
-                    value: 'Hilton LAX'
-                },
-                {
-                    label: 'Hilton Miami Downtown',
-                    value: 'Hilton Miami Downtown'
-                },
-                {
-                    label: 'Hilton Paris Opera',
-                    value: 'Hilton Paris Opera'
-                }
-            ]
+            hotelItems: []
         }
+    }
+
+    componentDidMount() {
+        let _hotel_list = _getHotelList()
+        this.setState({
+            hotelItems: _hotel_list
+        })
     }
 
     private _showAlert = (title: string, message: string): void => {
