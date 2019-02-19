@@ -22,7 +22,8 @@ export default class App extends React.Component {
     render() {
         return (
             <ApolloProvider client={client}>
-                <Reservations screenTitle={'Reservations'} />
+                {/* <Reservations screenTitle={'Reservations'} /> */}
+                <CreateReservation />
             </ApolloProvider>
         )
     }

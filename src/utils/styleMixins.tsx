@@ -44,7 +44,7 @@ export const $Device = {
             paddingHorizontal: 10,
             paddingVertical: 8,
             borderWidth: 2,
-            borderColor: 'red',
+            borderColor: 'gray',
             borderRadius: 8,
             color: 'black',
             paddingRight: 30 // to ensure the text is never behind the icon

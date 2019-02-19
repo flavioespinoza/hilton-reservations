@@ -1,5 +1,15 @@
 import { StyleSheet } from 'react-native'
 import { $DateInput, $TextInput, $Color } from '../../utils/styleMixins'
+import { $Device } from '../../utils/styleMixins'
+
+const StyleDeviceSpecific = StyleSheet.create({
+    inputIOS: {
+        ...$Device.selection.ios
+    },
+    inputAndroid: {
+        ...$Device.selection.android
+    }
+})
 
 const Style = StyleSheet.create({
     btnPrimary: {
@@ -59,4 +69,4 @@ const Style = StyleSheet.create({
     }
 })
 
-export { Style }
+export { StyleDeviceSpecific, Style }
