@@ -34,7 +34,4 @@ function _createReservation(name: string, hotel: string, arrivalDate: string, de
     `
 }
 
-export { 
-    _createReservation,
-    _reservations
-}
+export { _createReservation, _reservations }
