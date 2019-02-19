@@ -30,7 +30,8 @@ allprojects {
             url "$rootDir/../node_modules/react-native/android"
         }
     }
-}˝
+}
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = '4.7'
