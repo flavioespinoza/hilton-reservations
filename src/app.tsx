@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Text, View, SafeAreaView, ScrollView } from 'react-native'
+import { Text, View, SafeAreaView, ScrollView, FlatList } from 'react-native'
 import { AppStyle } from './app.style'
 import _formatDate from './utils/formatDate'
 import _ from 'lodash'
@@ -55,13 +55,12 @@ const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
     )
 })
 
+
 export default class App extends React.Component {
     render() {
         return (
             <ApolloProvider client={client}>
-                <View style={AppStyle.container}>
-                    <ReservationsList />
-                </View>
+                <Reservations screenTitle={'Reservations'} />
             </ApolloProvider>
         )
     }

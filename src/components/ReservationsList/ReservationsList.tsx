@@ -1,121 +1,43 @@
-import * as React from 'react'
-import { Style } from './ReservationsList.style'
+import React, { Component } from "react";
 import { ScrollView, FlatList, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
-import { ListItem } from 'react-native-elements'
-import AwesomeAlert from 'react-native-awesome-alerts'
-import _ from 'lodash'
+import { Style } from './ReservationsList.style'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
-interface Props {
-    items: ReadonlyArray<any> | any
-}
-
-interface State {
-    showAlert: boolean
-    alertMessage: string | undefined
-    alertTitle: string | undefined
-}
-
-const list = [
+const RESERVATIONS_QUERY = gql`
     {
-        name: 'Amy Farha',
-        hotelName: 'Hilton NYC',
-        arrivalDate: '2/20/19',
-        departureDate: '3/5/19',
-        id: '1234qwer'
-    },
-    {
-        name: 'Bob JoBob',
-        hotelName: 'Hilton Miami',
-        arrivalDate: '2/24/19',
-        departureDate: '3/15/19',
-        id: '8976asdf'
-    },
-    {
-        name: 'Carlos Perez',
-        hotelName: 'Hilton London',
-        arrivalDate: '2/28/19',
-        departureDate: '3/20/19',
-        id: 'uiop8765'
-    }
-]
-
-class ReservationsList extends React.PureComponent<Props, State> {
-    public constructor(props: Props) {
-        super(props)
-
-        this.state = {
-            showAlert: false,
-            alertMessage: undefined,
-            alertTitle: undefined
+        reservations {
+            id
+            hotelName
+            arrivalDate
+            departureDate
+            name
         }
     }
+`
 
-    private _keyExtractor = (item: any, index: any) => _.toString(index)
+const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
+    const { loading, reservations } = data
 
-    private _renderItem = ({ item }: any) => (
-
-        <ListItem
-            containerStyle={{ borderBottomColor: '#ccc', borderBottomWidth: 1 }}
-            title={'Reservation'}
-            subtitle={item.hotelName}
-            onPress={() => {
-                this._onPress({ item })
-            }}
-        />
-    )
-
-    private _showAlert = (title: string, message: string): void => {
-        this.setState({
-            alertMessage: message,
-            showAlert: true
-        })
-    }
-
-    private _hideAlert = (): void => {
-        this.setState({
-            alertMessage: undefined,
-            showAlert: false
-        })
-    }
-
-    private _onPress = ({ item }: any): void => {
-        this._showAlert(item.title, item.name)
-    }
-
-    public render(): JSX.Element {
-
-        const { items } = this.props
-
-        const list_items = JSON.parse(items)
-
+    if (loading)
         return (
-            <View style={Style.container}>
-                
-                <Text>{list_items}</Text>
-
-                <AwesomeAlert
-                    alertContainerStyle={{ borderRadius: 2 }}
-                    show={this.state.showAlert}
-                    showProgress={false}
-                    title={this.state.alertTitle}
-                    message={this.state.alertMessage}
-                    messageStyle={{ textAlign: 'center', color: 'red' }}
-                    closeOnTouchOutside={true}
-                    closeOnHardwareBackPress={false}
-                    showCancelButton={false}
-                    showConfirmButton={true}
-                    confirmButtonStyle={Style.btnPrimary}
-                    confirmText='OK, GOT IT!'
-                    onCancelPressed={() => {
-                        this._hideAlert()
-                    }}
-                    onConfirmPressed={() => {
-                        this._hideAlert()
-                    }}
-                />
+            <View>
+                <Text>loading...</Text>
             </View>
         )
-    }
-}
+
+    return (
+        <View style={Style.container}>
+            {reservations.map(({ id, hotelName, arrivalDate, departureDate, name }: any) => (
+                <View key={id} style={{width: '100%', backgroundColor: 'gainsboro', marginBottom: 12}}>
+                    <Text style={Style.welcome}>{hotelName}</Text>
+                    <Text style={Style.welcome}>{arrivalDate}</Text>
+                    <Text style={Style.welcome}>{departureDate}</Text>
+                    <Text style={Style.welcome}>{name}</Text>
+                </View>
+            ))}
+        </View>
+    )
+})
 
 export default ReservationsList
