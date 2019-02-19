@@ -1,21 +1,23 @@
 import * as React from 'react'
 import { Style } from './Reservations.style'
-import { View, Text } from 'react-native'
+import { ScrollView, View, Text } from 'react-native'
 import { Header } from 'react-native-elements'
 import ReservationsList from '../../components/ReservationsList/ReservationsList'
-import { StyleDeviceSpecific } from '../../components/SelectOption/SelectOption.style'
+import _ from 'lodash'
 
-interface Props {}
+interface Props {
+    screenTitle: string
+}
 
 interface State {
-    screenTitle: string
+    
 }
 
 class Reservations extends React.PureComponent<Props, State> {
     public constructor(props: Props) {
         super(props)
         this.state = {
-            screenTitle: 'Reservations'
+            screenTitle: this.props.screenTitle
         }
     }
 
@@ -33,27 +35,29 @@ class Reservations extends React.PureComponent<Props, State> {
 
     public render(): JSX.Element {
         return (
-            <View style={Style.container}>
+            <ScrollView contentContainerStyle={Style.container}>
                 <Header
                     placement={'center'}
-                    leftComponent={{ 
-                        icon: 'menu', 
+                    leftComponent={{
+                        icon: 'menu',
                         color: '#fff',
                         onPress: this._onPressMenu
                     }}
-                    centerComponent={{ 
-                        text: this.state.screenTitle, 
-                        style: { color: '#fff' } 
+                    centerComponent={{
+                        text: this.props.screenTitle,
+                        style: { color: '#fff' }
                     }}
-                    rightComponent={{ 
+                    rightComponent={{
                         icon: 'more-vert',
-                        type: 'MaterialIcons', 
+                        type: 'MaterialIcons',
                         color: '#fff',
                         onPress: this._onPressMore
                     }}
                 />
+
                 <ReservationsList />
-            </View>
+
+            </ScrollView>
         )
     }
 }
