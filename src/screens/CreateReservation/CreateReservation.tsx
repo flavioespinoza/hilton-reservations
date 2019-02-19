@@ -1,13 +1,13 @@
 /// <reference path='../../index.d.ts' />
 import * as React from 'react'
-import { View, TextInput, Text, Picker } from 'react-native'
+import { View, TextInput, Text, Picker, Platform } from 'react-native'
 import { DateSelection } from '../../components/DateSelection/DateSelection'
 import { Button } from 'react-native-elements'
 import { Style } from './CreateReservation.style'
 import _formatDate from '../../utils/formatDate'
 import _ from 'lodash'
 import AwesomeAlert from 'react-native-awesome-alerts'
-import RNPickerSelect from 'react-native-picker-select'
+import PickerModal from '../../components/ModalPicker/PickerModal'
 
 interface Props {}
 
@@ -26,35 +26,11 @@ interface State {
     alertTitle: string | undefined
     text_1: string | undefined
     text_2: string | undefined
-    hotelPlaceholder: string
+    pickerOpacity: number
+    opacityOfOtherItems: number
+    textInputValue: string
+    hotelItems: [] | any
 }
-
-const hotelList = [
-    {
-        label: 'Select hotel',
-        value: 'Select hotel'
-    },
-    {
-        label: 'Hilton NYC',
-        value: 'Hilton NYC'
-    },
-    {
-        label: 'Hilton Brooklyn New York',
-        value: 'Hilton Brooklyn New York'
-    },
-    {
-        label: 'Hilton LAX',
-        value: 'Hilton LAX'
-    },
-    {
-        label: 'Hilton Miami Downtown',
-        value: 'Hilton Miami Downtown'
-    },
-    {
-        label: 'Hilton Paris Opera',
-        value: 'Hilton Paris Opera'
-    }
-]
 
 class CreateReservation extends React.PureComponent<Props, State> {
     private inputRefs = {
@@ -80,7 +56,31 @@ class CreateReservation extends React.PureComponent<Props, State> {
             alertTitle: undefined,
             text_1: 'Text 1',
             text_2: 'Text 2',
-            hotelPlaceholder: 'Select hotel'
+            pickerOpacity: 0,
+            opacityOfOtherItems: 1,
+            textInputValue: 'hello textInputValue',
+            hotelItems: [
+                {
+                    label: 'Hilton NYC',
+                    value: 'Hilton NYC'
+                },
+                {
+                    label: 'Hilton Brooklyn New York',
+                    value: 'Hilton Brooklyn New York'
+                },
+                {
+                    label: 'Hilton LAX',
+                    value: 'Hilton LAX'
+                },
+                {
+                    label: 'Hilton Miami Downtown',
+                    value: 'Hilton Miami Downtown'
+                },
+                {
+                    label: 'Hilton Paris Opera',
+                    value: 'Hilton Paris Opera'
+                }
+            ]
         }
     }
 
@@ -153,10 +153,12 @@ class CreateReservation extends React.PureComponent<Props, State> {
     }
 
     private _createReservation = (): void => {
+        
         this.inputRefs.firstNameTextInput.current!.blur()
         this.inputRefs.lastNameTextInput.current!.blur()
 
         if (this.state.firstName && this.state.lastName) {
+            
             let name = `${this.state.firstName} ${this.state.lastName}`
 
             this.setState({
@@ -174,35 +176,29 @@ class CreateReservation extends React.PureComponent<Props, State> {
                     lastName: undefined,
                     arrivalDate: undefined,
                     departureDate: undefined,
-                    hotel: undefined,
+                    hotel: 'Select hotel',
                     name: undefined
                 })
             }, 10000)
         }
     }
 
-    private _handleHotelSelection = (selection: string): void => {
+    private _handleHotelSelection = (item: any): void => {
         this.setState({
-            hotel: selection
+            hotel: item.label
         })
     }
 
     render() {
-        let { hotel } = this.state
 
         return (
             <View style={Style.container}>
-                <View style={{ width: '100%', height: 40, borderColor: 'gray', borderWidth: 2 }}>
-                    <Picker
-                        selectedValue={this.state.hotel}
-                        style={{ height: 40, width: '100%', marginTop: -2 }}
-                        onValueChange={(itemValue, itemIndex) => this.setState({ hotel: itemValue })}
-                    >
-                        {hotelList.map((obj, i) => {
-                            return <Picker.Item key={i} label={obj.label} value={obj.value} />
-                        })}
-                    </Picker>
-                </View>
+                <PickerModal
+                    initValue={'Select hotel'}
+                    selectionState={this.state.hotel}
+                    data={this.state.hotelItems}
+                    _onChange={this._handleHotelSelection}
+                />
 
                 <DateSelection
                     placeholder={'Arrival date'}

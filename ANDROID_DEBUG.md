@@ -1,22 +1,22 @@
  ## Start Fresh
 
  ##### Kill All Android Servers
- ```shell
+ ```bash {.copy-clip}
 adb kill-server
  ```
 
  ##### List Android Devices
- ```shell
+ ```bash {.copy-clip}
 adb devices
  ```
 
 ##### Android Device ID
-```shell
+```bash {.copy-clip}
 192.168.56.101:5555
 ```
 
 ##### Try Resetting
-```shell
+```bash {.copy-clip}
 # Remove Android and ios build folders
 sudo rm -r android/
 sudo rm -r ios/
@@ -29,13 +29,13 @@ sudo rm -r package-lock.json
 sudo rm -r yarn.lock
 ```
 > Try with yarn
-```shell
+```bash {.copy-clip}
 # Install Node modules
 yarn install
 ```
 > You need the React-Native Client to upgrade React-Native
 
-```shell
+```bash {.copy-clip}
 # Install client
 npm install -g react-native-cli
 ```
@@ -70,6 +70,6 @@ react-native run-android
 ## Load last successfull Android build
 
 ##### Run Android by Device ID
-```shell
+```bash {.copy-clip}
 react-native run-android --deviceId 192.168.56.101:5555
 ```
