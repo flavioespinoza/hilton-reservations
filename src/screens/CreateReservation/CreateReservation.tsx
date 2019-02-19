@@ -1,6 +1,6 @@
 /// <reference path='../../index.d.ts' />
 import * as React from 'react'
-import { View, TextInput, Text, Picker, Platform } from 'react-native'
+import { View, TextInput, Text, AsyncStorage } from 'react-native'
 import { DateSelection } from '../../components/DateSelection/DateSelection'
 import { Button } from 'react-native-elements'
 import { Style } from './CreateReservation.style'
@@ -9,13 +9,21 @@ import _ from 'lodash'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import PickerModal from '../../components/ModalPicker/ModalPicker'
 import { _getHotelList } from '../../api/getHotelList'
+import { _createReservation } from '../../api/query'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+
+const BUILD_QUERY = (name: any, hotel: any, arrivalDate: any, departureDate: any) => {
+    let query = _createReservation(name, hotel, arrivalDate, departureDate)
+    return query
+}
 
 interface Props {}
 
 interface State {
     arrivalDate: string | any
     departureDate: string | any
-    hotel: string | undefined
+    hotel: string | any
     firstName: string | undefined
     lastName: string | undefined
     name: string | undefined
@@ -31,6 +39,16 @@ interface State {
     opacityOfOtherItems: number
     textInputValue: string
     hotelItems: [] | any
+    submit: boolean
+}
+
+const _storeData = async (str: string) => {
+    try {
+        localStorage.setItem('myCat', str)
+        await AsyncStorage.setItem('stuff', str)
+    } catch (error) {
+        // Error saving data
+    }
 }
 
 class CreateReservation extends React.PureComponent<Props, State> {
@@ -45,7 +63,7 @@ class CreateReservation extends React.PureComponent<Props, State> {
         this.state = {
             arrivalDate: undefined,
             departureDate: undefined,
-            hotel: undefined,
+            hotel: 'Select hotel...',
             firstName: undefined,
             lastName: undefined,
             name: undefined,
@@ -60,7 +78,8 @@ class CreateReservation extends React.PureComponent<Props, State> {
             pickerOpacity: 0,
             opacityOfOtherItems: 1,
             textInputValue: 'hello textInputValue',
-            hotelItems: []
+            hotelItems: [],
+            submit: false
         }
     }
 
@@ -140,34 +159,41 @@ class CreateReservation extends React.PureComponent<Props, State> {
     }
 
     private _createReservation = (): void => {
-        
         this.inputRefs.firstNameTextInput.current!.blur()
         this.inputRefs.lastNameTextInput.current!.blur()
 
-        if (this.state.firstName && this.state.lastName) {
-            
-            let name = `${this.state.firstName} ${this.state.lastName}`
+        let _name = `${this.state.firstName} ${this.state.lastName}`
+        let _firstName = this.state.firstName
+        let _lastName = this.state.lastName
+        let _hotelName = this.state.hotel
+        let _arrivalDate = this.state.arrivalDate
+        let _departureDate = this.state.departureDate
+
+        this.setState({
+            name: _name,
+            firstName: _firstName,
+            lastName: _lastName,
+            hotel: _hotelName,
+            arrivalDate: _arrivalDate,
+            departureDate: _departureDate,
+            submit: true
+        })
+
+        setTimeout(() => {
+
+            this.inputRefs.firstNameTextInput.current!.clear()
+            this.inputRefs.lastNameTextInput.current!.clear()
 
             this.setState({
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                arrivalDate: this.state.arrivalDate,
-                departureDate: this.state.departureDate,
-                hotel: this.state.hotel,
-                name: name
+                name: undefined,
+                firstName: undefined,
+                lastName: undefined,
+                hotel: undefined,
+                arrivalDate: undefined,
+                departureDate: undefined,
+                submit: false
             })
-
-            setTimeout(() => {
-                this.setState({
-                    firstName: undefined,
-                    lastName: undefined,
-                    arrivalDate: undefined,
-                    departureDate: undefined,
-                    hotel: 'Select hotel',
-                    name: undefined
-                })
-            }, 10000)
-        }
+        }, 2000);
     }
 
     private _handleHotelSelection = (item: any): void => {
@@ -177,6 +203,30 @@ class CreateReservation extends React.PureComponent<Props, State> {
     }
 
     render() {
+        const query = () => {
+            if (this.state.submit) {
+                let STUFF = BUILD_QUERY(this.state.name, this.state.hotel, this.state.arrivalDate, '2/24/19')
+
+                let is_string = () => {
+                    if (typeof STUFF === 'string') {
+                        _storeData(STUFF)
+                        console.log('STUFF', STUFF)
+                        return 'STUFF is a string!!!'
+                    } else {
+                        return 'STUFF is NOT a string :(!!!'
+                    }
+                }
+                return (
+                    <View>
+                        <Text>Query</Text>
+                        <Text>{is_string()}</Text>
+                        <Text>{STUFF}</Text>
+                    </View>
+                )
+            } else {
+                return <Text>loading...</Text>
+            }
+        }
 
         return (
             <View style={Style.container}>
@@ -231,14 +281,15 @@ class CreateReservation extends React.PureComponent<Props, State> {
 
                 <Button title={'Create Reservation'} type={'outline'} onPress={this._createReservation} />
 
-                {this.state.name ? (
-                    <View>
-                        <Text style={Style.welcome}>{this.state.hotel}</Text>
-                        <Text style={Style.welcome}>{this.state.name}</Text>
-                        <Text style={Style.welcome}>Arrive: {this.state.arrivalDate}</Text>
-                        <Text style={Style.welcome}>Depart: {this.state.departureDate}</Text>
-                    </View>
-                ) : null}
+                {query()}
+
+                {this.state.firstName ? <Text>{this.state.firstName}</Text> : null}
+                {this.state.lastName ? <Text>{this.state.lastName}</Text> : null}
+                {this.state.hotel ? <Text>{this.state.hotel}</Text> : null}
+                {this.state.arrivalDate ? <Text>{this.state.arrivalDate}</Text> : null}
+                {this.state.departureDate ? <Text>{this.state.departureDate}</Text> : null}
+
+                {this.state.submit ? <Text style={{ color: 'red' }}>{'this.state.submit === true'}</Text> : null}
 
                 <AwesomeAlert
                     alertContainerStyle={{ borderRadius: 2 }}
