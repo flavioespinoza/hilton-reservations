@@ -25,12 +25,22 @@ const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
 
     const _renderItem = ({ item }: any) => (
         <ListItem
-            containerStyle={{ borderBottomColor: '#ccc', borderBottomWidth: 1 }}
+            containerStyle={{ margin: 0, padding: 0 }}
+            contentContainerStyle={Style.listItemContainer}
             title={item.name}
-            subtitle={item.hotelName}
-            rightTitle={item.arrivalDate}
-            rightSubtitle={item.departureDate}
-            
+            subtitle={
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={{ padding: 6, width: '50%', height: 40, backgroundColor: 'powderblue' }}>
+                        <Text>{item.hotelName}</Text>
+                        <Text style={{fontSize: 11, color: 'gray'}}>{item.id}</Text>
+                    </View>
+                    <View style={{ padding: 6, width: '50%', height: 40, backgroundColor: 'skyblue' }}>
+                        <Text style={{fontSize: 11}}>Arrival: {item.arrivalDate}</Text>
+                        <Text style={{fontSize: 11}}>Depart: {item.arrivalDate}</Text>
+                    </View>
+                </View>
+            }
+            bottomDivider={true}
         />
     )
 
