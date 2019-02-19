@@ -160,13 +160,7 @@ class CreateReservation extends React.PureComponent<Props, State> {
         }
     }
 
-    private _sendReservation = (
-        firstName: string,
-        lastName: string,
-        hotelName: string,
-        arrivalDate: string,
-        departureDate: string
-    ): void => {
+    private _sendReservation = (obj: any): void => {
         const _endpoint = 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
 
         axios({
@@ -177,10 +171,10 @@ class CreateReservation extends React.PureComponent<Props, State> {
 					mutation {
 						createReservation(
 							data: {
-									name: "${firstName} ${lastName}"
-									hotelName: "${hotelName}"
-									arrivalDate: "${arrivalDate}"
-									departureDate: "${departureDate}"
+									name: "${obj.firstName} ${obj.lastName}"
+									hotelName: "${obj.hotelName}"
+									arrivalDate: "${obj.arrivalDate}"
+									departureDate: "${obj.departureDate}"
 							}
 						)   {
 							id
@@ -193,22 +187,22 @@ class CreateReservation extends React.PureComponent<Props, State> {
 			`
             }
         })
-            .then(res => {
-                let reservation = res.data.data.createReservation
-                let confirmation = {
-                    confirm_arrivalDate: reservation.arrivalDate,
-                    confirm_departureDate: reservation.departureDate,
-                    confirm_hotelName: reservation.hotelName,
-                    confirm_id: reservation.id,
-                    confirm_name: reservation.name
-                }
-                this.setState(confirmation)
-                this._clearState()
-            })
-            .catch(err => {
-                console.error(err)
-                alert(err.message)
-            })
+        .then(res => {
+            let reservation = res.data.data.createReservation
+            let confirmation = {
+                confirm_arrivalDate: reservation.arrivalDate,
+                confirm_departureDate: reservation.departureDate,
+                confirm_hotelName: reservation.hotelName,
+                confirm_id: reservation.id,
+                confirm_name: reservation.name
+            }
+            this.setState(confirmation)
+            this._clearState()
+        })
+        .catch(err => {
+            console.error(err)
+            alert(err.message)
+        })
     }
 
     private _createReservation = (): void => {
@@ -222,13 +216,15 @@ class CreateReservation extends React.PureComponent<Props, State> {
             this.inputRefs.firstNameTextInput.current!.blur()
             this.inputRefs.lastNameTextInput.current!.blur()
 
-            let _firstName = this.state.firstName
-            let _lastName = this.state.lastName
-            let _hotelName = this.state.hotel
-            let _arrivalDate = this.state.arrivalDate
-            let _departureDate = this.state.departureDate
+            let obj = {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                hotelName: this.state.hotel,
+                arrivalDate: this.state.arrivalDate,
+                departureDate: this.state.departureDate
+            }
 
-            this._sendReservation(_firstName, _lastName, _hotelName, _arrivalDate, _departureDate)
+            this._sendReservation(obj)
         } else {
             alert('All fields are required!')
         }
