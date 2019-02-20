@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Text, View, SafeAreaView, ScrollView, FlatList } from 'react-native'
+import { Header } from 'react-native-elements'
 import { AppStyle } from './app.style'
 import _formatDate from './utils/formatDate'
 import _ from 'lodash'
@@ -59,6 +60,22 @@ export default class App extends React.Component {
     render() {
         return (
             <ApolloProvider client={client}>
+                <Header
+                    placement={'center'}
+                    leftComponent={{
+                        icon: 'menu',
+                        color: '#fff'
+                    }}
+                    centerComponent={{
+                        text: 'Screen Title',
+                        style: { color: '#fff' }
+                    }}
+                    rightComponent={{
+                        icon: 'more-vert',
+                        type: 'MaterialIcons',
+                        color: '#fff'
+                    }}
+                />
                 {/* <Reservations screenTitle={'Reservations'} /> */}
                 <CreateReservation />
             </ApolloProvider>

@@ -5,7 +5,7 @@ Check out my other joints @ https://flavioespinoza.github.io
 
 ##### Kill All Android Servers
 
-<a >copy</a>
+<a class="copy-clip__a-tag">copy</a>
 ```bash {.copy-clip}
 adb kill-server
 ```
@@ -83,15 +83,24 @@ react-native run-android
 ```
 
 ---
+## app-debug.apk
+
+```bash {.copy-clip}
+def enableSeparateBuildPerCPUArchitecture = false
+```
+
+---
 
 ## Load last successfull Android build
 
 ##### Run Android by Device ID
 
-```bash {.copy-clip}
+Commands
+```shell
+adb devices
+
+> `List of devices attached`
+> `192.168.56.101:5555	device`
+
 react-native run-android --deviceId 192.168.56.101:5555
-```
-
-```bash {.copy-clip}
-
 ```

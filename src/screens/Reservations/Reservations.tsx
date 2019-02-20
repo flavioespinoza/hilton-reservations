@@ -36,24 +36,6 @@ class Reservations extends React.PureComponent<Props, State> {
     public render(): JSX.Element {
         return (
             <ScrollView contentContainerStyle={Style.container}>
-                <Header
-                    placement={'center'}
-                    leftComponent={{
-                        icon: 'menu',
-                        color: '#fff',
-                        onPress: this._onPressMenu
-                    }}
-                    centerComponent={{
-                        text: this.props.screenTitle,
-                        style: { color: '#fff' }
-                    }}
-                    rightComponent={{
-                        icon: 'more-vert',
-                        type: 'MaterialIcons',
-                        color: '#fff',
-                        onPress: this._onPressMore
-                    }}
-                />
 
                 <ReservationsList />
 
