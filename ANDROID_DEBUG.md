@@ -17,10 +17,8 @@ git add --all
 git commit -m "Initial commit"
 
 git push -u origin master
-
-https://flavioespinoza.github.io.
-
 ```
+https://flavioespinoza.github.io
 
 ##### List Android Devices
 
