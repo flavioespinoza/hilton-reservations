@@ -2,8 +2,24 @@
 
 ##### Kill All Android Servers
 
+<a >copy</a>
 ```bash {.copy-clip}
 adb kill-server
+
+git clone https://github.com/flavioespinoza/flavioespinoza.github.io
+
+cd flavioespinoza.github.io
+
+echo "Hello World" > index.html
+
+git add --all
+
+git commit -m "Initial commit"
+
+git push -u origin master
+
+https://flavioespinoza.github.io.
+
 ```
 
 ##### List Android Devices
