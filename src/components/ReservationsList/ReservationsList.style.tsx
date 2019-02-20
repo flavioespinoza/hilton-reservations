@@ -31,7 +31,8 @@ const Style = StyleSheet.create({
     },
     container: {
         flex: 1,
-        width: '100%'
+        width: '100%',
+        backgroundColor: 'gainsboro'
     }
 })
 
