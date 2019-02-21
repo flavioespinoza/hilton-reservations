@@ -33,7 +33,8 @@ yarn start:ios
 react-native run-ios
 ```
 
-<img src='docs/img/screen_1.png' width='49%' />
+<img src='docs/img/balls.png' width='49%' />
+
 <img src='docs/img/screen_2.png' width='49%' />
 
 ## Running on a device
@@ -214,7 +215,6 @@ export default App
 ## Results! Android and iOS app with the same codebase!
 
 <img style="margin-top: 12px" src="react-native-hilton-reservations.png" width="100%">
-
 
 ### Translating GraphQL schemas to TypeScript
 _schema.graphql_
