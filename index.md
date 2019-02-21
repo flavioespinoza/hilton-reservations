@@ -1,7 +1,16 @@
 # Hilton Reservations
 
+[View on GitHub](docs/img/github_logo.png)
+
+[<img src="docs/img/github_logo.png">](http://google.com.au/)
+
+<p>................................................................................................</p>
+
 __Pre requesites__
 https://facebook.github.io/react-native/docs/getting-started
+
+<p>................................................................................................</p>
+
 
 ## Let's do this
 
