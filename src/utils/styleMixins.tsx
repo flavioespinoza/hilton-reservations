@@ -53,6 +53,7 @@ export const $Device = {
 }
 
 export const $PrimaryColor = '#4388D6'
+export const $CancelColor = 'red'
 
 export const $Color = {
     primary: {
@@ -63,5 +64,14 @@ export const $Color = {
             color: $PrimaryColor
         },
         color: $PrimaryColor
+    },
+    cancel: {
+        bg: {
+            backgroundColor: $CancelColor
+        },
+        text: {
+            color: $CancelColor
+        },
+        color: $CancelColor
     }
 }
