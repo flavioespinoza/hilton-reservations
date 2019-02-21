@@ -97,7 +97,7 @@ const Style = StyleSheet.create({
         paddingLeft: 12,
         paddingRight: 12,
         textAlign: 'center',
-        color: 'red'
+        color: '#EF5356'
     },
     cancelReservationBtn: { 
         marginTop: 12,

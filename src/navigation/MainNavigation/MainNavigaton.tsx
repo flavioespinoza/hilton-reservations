@@ -17,7 +17,7 @@ const TabBarOptions = {
             opacity: 100
         },
         activeTabStyle: {
-            backgroundColor: 'red'
+            backgroundColor: '#EF5356'
         },
         style: {
             backgroundColor: 'white'

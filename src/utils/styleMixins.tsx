@@ -54,7 +54,7 @@ export const $Device = {
 
 export const $AppRed = '#EF5356'
 export const $PrimaryColor = '#EF5356'
-export const $CancelColor = 'red'
+export const $CancelColor = '#EF5356'
 
 
 export const $Color = {

@@ -55,7 +55,7 @@ const Style = StyleSheet.create({
     },
     btnMakeReservation: {
         marginTop: 200,
-        color: 'red'
+        color: '#EF5356'
     },
     firstName: {
         ...$TextInput
@@ -82,12 +82,12 @@ const Style = StyleSheet.create({
     },
     instructions: {
         textAlign: 'center',
-        color: 'red',
+        color: '#EF5356',
         marginBottom: 5
     },
     input: {
         color: 'blue',
-        backgroundColor: 'red'
+        backgroundColor: '#EF5356'
     }
 })
 

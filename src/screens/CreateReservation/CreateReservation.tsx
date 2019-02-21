@@ -301,7 +301,7 @@ class CreateReservation extends React.PureComponent<Props, State> {
                     {this.state.departureDate ? <Text>{this.state.departureDate}</Text> : null}
                 </View>
 
-                {this.state.submit ? <Text style={{ color: 'red' }}>{'this.state.submit === true'}</Text> : null}
+                {this.state.submit ? <Text style={{ color: '#EF5356' }}>{'this.state.submit === true'}</Text> : null}
 
                 <AwesomeAlert
                     alertContainerStyle={{ borderRadius: 2 }}
@@ -309,7 +309,7 @@ class CreateReservation extends React.PureComponent<Props, State> {
                     showProgress={false}
                     title={this.state.alertTitle}
                     message={this.state.alertMessage}
-                    messageStyle={{ textAlign: 'center', color: 'red' }}
+                    messageStyle={{ textAlign: 'center', color: '#EF5356' }}
                     closeOnTouchOutside={true}
                     closeOnHardwareBackPress={false}
                     showCancelButton={false}
