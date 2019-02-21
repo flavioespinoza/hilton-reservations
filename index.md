@@ -2,7 +2,7 @@
 
 [View on GitHub](docs/img/github_logo.png)
 
-[<img src="docs/img/github_logo.png">](http://google.com.au/)
+[<img src="docs/img/github_logo.png">](https://github.com/flavioespinoza/hilton_reservations)
 
 <p>................................................................................................</p>
 
@@ -226,7 +226,6 @@ class App extends React.Component {
 }
 
 export default App
-
 ```
 
 ## Results! Android and iOS app with the same codebase!
@@ -250,7 +249,6 @@ type Mutation {
     updateManyReservations(data: ReservationUpdateManyMutationInput!, where: ReservationWhereInput): BatchPayload!
     deleteManyReservations(where: ReservationWhereInput): BatchPayload!
 }
-
 ```
 
 _schema.ts_
@@ -271,7 +269,6 @@ const MUTATION = {
 }
 
 type Mutatation = MUTATION
-
 ```
 
 

@@ -1,8 +1,7 @@
 # Hilton Reservations
 
-[View on GitHub](docs/img/github_logo.png)
+[<img src="docs/img/darcula_header.png">](https://flavioespinoza.github.io/hilton_reservations)
 
-[<img src="docs/img/github_logo.png">](http://google.com.au/)
 
 <p>................................................................................................</p>
 
