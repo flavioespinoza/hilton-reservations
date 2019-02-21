@@ -230,6 +230,24 @@ code.language-css .token.selector > .token.pseudo-element {
   margin-bottom: -4px;
   padding-bottom: 0;
 }
+.markdown-preview.markdown-preview .darcula-bg {
+  position: relative;
+  height: 300px;
+  background-color: #2B2B2B;
+  padding-left: 24px;
+  padding-top: 12px;
+  padding-bottom: 48px;
+}
+.markdown-preview.markdown-preview .darcula-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.markdown-preview.markdown-preview .darcula-left {
+  position: absolute;
+  left: 48px;
+  top: 49px;
+}
  
       </style>
     </head>
@@ -237,8 +255,12 @@ code.language-css .token.selector > .token.pseudo-element {
       <div class="mume markdown-preview   ">
       <h1 class="mume-header" id="hilton-reservations">Hilton Reservations</h1>
 
+<p><a href="docs/img/github_logo.png">View on GitHub</a></p>
+<p><a href="https://github.com/flavioespinoza/hilton_reservations"><img src="docs/img/github_logo.png"></a></p>
+<p>................................................................................................</p>
 <p><strong>Pre requesites</strong><br>
 <a href="https://facebook.github.io/react-native/docs/getting-started">https://facebook.github.io/react-native/docs/getting-started</a></p>
+<p>................................................................................................</p>
 <h2 class="mume-header" id="lets-do-this">Let&apos;s do this</h2>
 
 <p>Clone the repo</p>
@@ -254,8 +276,8 @@ code.language-css .token.selector > .token.pseudo-element {
 <span class="token string">&quot;or&quot;</span>
 
 react-native run-ios
-</pre><img src="docs/img/balls.png" width="49%">
-<img src="docs/img/screen_2.png" width="49%">
+</pre><img src="docs/img/balls.png" width="49.5%">
+<img src="docs/img/screen_2.png" width="49.5%">
 <h2 class="mume-header" id="running-on-a-device">Running on a device</h2>
 
 <p>The above command will automatically run your app on the iOS Simulator by default. If you want to run the app on an actual physical iOS device, <a href="https://facebook.github.io/react-native/docs/running-on-device">PLEASE FOLLOW THESE INSTUCTIONS</a></p>
@@ -417,7 +439,6 @@ react-native run-ios
 <span class="token punctuation">}</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> App
-
 </pre><h2 class="mume-header" id="results-android-and-ios-app-with-the-same-codebase">Results! Android and iOS app with the same codebase!</h2>
 
 <img style="margin-top: 12px" src="react-native-hilton-reservations.png" width="100%">
@@ -436,7 +457,6 @@ react-native run-ios
     <span class="token function">updateManyReservations</span><span class="token punctuation">(</span>data<span class="token punctuation">:</span> <span class="token constant">ReservationUpdateManyMutationInput!</span><span class="token punctuation">,</span> where<span class="token punctuation">:</span> <span class="token constant">ReservationWhereInput</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token constant">BatchPayload!</span>
     <span class="token function">deleteManyReservations</span><span class="token punctuation">(</span>where<span class="token punctuation">:</span> <span class="token constant">ReservationWhereInput</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token constant">BatchPayload!</span>
 <span class="token punctuation">}</span>
-
 </pre><p><em>schema.ts</em></p>
 <pre data-role="codeBlock" data-info="typescript" class="language-typescript"><span class="token keyword">const</span> <span class="token constant">MUTATION</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token function">createReservation</span><span class="token punctuation">(</span>$data<span class="token punctuation">:</span> ReservationCreateInput<span class="token punctuation">)</span><span class="token punctuation">:</span> Reservation
@@ -452,7 +472,6 @@ react-native run-ios
 <span class="token punctuation">}</span>
 
 <span class="token keyword">type</span> Mutatation <span class="token operator">=</span> <span class="token constant">MUTATION</span>
-
 </pre>
       </div>
       <div class="md-sidebar-toc"><ul>
