@@ -1,47 +1,10 @@
-# Hilton Reservations
+<h1>Hilton Reservations</h1> 
 
-__Pre requesites__
-https://facebook.github.io/react-native/docs/getting-started
-
-## Let's do this
-
-
-Clone the repo
-```bash
-git clone https://github.com/flavioespinoza/hilton_reservations.git
-```
-
-
-cd into directory 
-```bash
-cd hilton_reservations
-```
-
-
-Install with yarn or npm 
-```bash
-yarn install
-```
-
-
-## Run  on XCode's iPhone emulator
-```bash {.copy-clip}
-yarn start:ios
-
-"or"
-
-react-native run-ios
-```
-
-<img src='docs/img/screen_1.png' width='49%' />
-<img src='docs/img/screen_2.png' width='49%' />
-
-## Running on a device
-The above command will automatically run your app on the iOS Simulator by default. If you want to run the app on an actual physical iOS device, [PLEASE FOLLOW THESE INSTUCTIONS](https://facebook.github.io/react-native/docs/running-on-device)
+[!["VIEW ON GITHUB"](docs/img/github_logo.png) View on the Hub that is Git](https://github.com/flavioespinoza/hilton_reservations)
 
 ---
 
-#### Creating GraphQL queries and mutations with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">ES6 Template Literals</a>
+### Creating GraphQL queries and mutations with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">ES6 Template Literals</a>
 
 ```Typescript
 
@@ -209,7 +172,6 @@ export default App
 _schema.graphql_
 
 ```ruby
-
 type Mutation {
     createReservation(data: ReservationCreateInput!): Reservation!
     updateReservation(data: ReservationUpdateInput!, where: ReservationWhereUniqueInput!): Reservation
@@ -222,13 +184,11 @@ type Mutation {
     updateManyReservations(data: ReservationUpdateManyMutationInput!, where: ReservationWhereInput): BatchPayload!
     deleteManyReservations(where: ReservationWhereInput): BatchPayload!
 }
-
 ```
 
 _schema.ts_
 
 ```typescript
-
 const MUTATION = {
     createReservation($data: ReservationCreateInput): Reservation
     updateReservation($data: ReservationUpdateInput, $where: ReservationWhereUniqueInput): Reservation
@@ -243,8 +203,4 @@ const MUTATION = {
 }
 
 type Mutatation = MUTATION
-
 ```
-
-
-
