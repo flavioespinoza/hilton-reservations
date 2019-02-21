@@ -12,6 +12,24 @@ import gql from 'graphql-tag'
 
 const cache = new InMemoryCache();
 
+const typeDefs = `
+    type Todo {
+        id: Int!
+        text: String!
+        completed: Boolean!
+    }
+
+    type Mutation {
+        addTodo(text: String!): Todo
+        toggleTodo(id: Int!): Todo
+    }
+
+    type Query {
+        visibilityFilter: String
+        todos: [Todo]
+    }
+`
+
 const client = new ApolloClient({
     uri: 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev',
     cache,
@@ -26,7 +44,8 @@ const client = new ApolloClient({
                     return null
                 }
             }
-        }
+        },
+        typeDefs: typeDefs
     }
 })
 
