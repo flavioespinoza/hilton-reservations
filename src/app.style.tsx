@@ -2,6 +2,22 @@ import * as React from 'react'
 import { StyleSheet } from 'react-native'
 import { $ContainerBase, $DateInput, $TextInput, $Color } from './utils/styleMixins'
 
+const styles = StyleSheet.create({
+    SectionHeaderStyle: {
+        backgroundColor: '#EF5356',
+        fontSize: 10,
+        padding: 5,
+        color: 'white'
+    },
+
+    SectionListItemStyle: {
+        fontSize: 15,
+        padding: 20,
+        color: 'black',
+        backgroundColor: 'white'
+    }
+})
+
 const AppStyle = StyleSheet.create({
     btnPrimary: {
         ...$Color.primary.bg, 
@@ -60,4 +76,4 @@ const AppStyle = StyleSheet.create({
     }
 })
 
-export { AppStyle }
+export { AppStyle, styles }
