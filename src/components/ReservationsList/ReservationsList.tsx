@@ -19,7 +19,120 @@ const RESERVATIONS_QUERY = gql`
     }
 `
 
+interface Props {
+    sections: ReadonlyArray<any> | any
+}
+
+interface State {
+    showAlert: boolean
+    alertMessage: string | undefined
+    alertTitle: string | undefined
+}
+
+class ReservationSectionList extends React.PureComponent<Props, State> {
+    constructor(props: Props) {
+        super(props)
+
+        this.state = {
+            showAlert: false,
+            alertMessage: undefined,
+            alertTitle: undefined
+        }
+    }
+
+    private _platformComponent = () => {
+        if (Platform.OS == 'ios') {
+            return (
+                <View style={Style.listHeaderComponent}>
+                    <Text style={Style.listHeaderText} />
+                </View>
+            )
+        } else {
+            return null
+        }
+    }
+
+    private _keyExtractor = (item: any, index: any) => _.toString(index)
+
+    private _renderItem = ({ item }: any) => (
+        <View style={Style.card}>
+            <ListItem
+                title={item.name}
+                subtitle={
+                    <View style={Style.cardContent}>
+                        <View style={{ padding: 8, width: '100%', height: 48 }}>
+                            <Text>{item.hotelName}</Text>
+                            <Text style={{ fontSize: 11, color: 'gray' }}>{item.id}</Text>
+                        </View>
+                        <View style={{ padding: 8, width: '100%', height: 48 }}>
+                            <Text style={{ fontSize: 11 }}>Arrival: {item.arrivalDate}</Text>
+                            <Text style={{ fontSize: 11 }}>Depart: {item.arrivalDate}</Text>
+                        </View>
+                    </View>
+                }
+                bottomDivider={true}
+                onPress={() => {this._onPress(item)}}
+            />
+        </View>
+    )
+
+    private _showAlert = (title: string, message: string): void => {
+        this.setState({
+            alertMessage: message,
+            showAlert: true
+        })
+    }
+
+    private _hideAlert = (): void => {
+        this.setState({
+            alertMessage: undefined,
+            showAlert: false
+        })
+    }
+
+    private _onPress = ({ item }: any): void => {
+        this._showAlert(item.title, item.name)
+    }
+
+    render() {
+        return (
+            <View style={Style.container}>
+                <SectionList
+                    ListHeaderComponent={this._platformComponent()}
+                    sections={this.props.sections}
+                    renderSectionHeader={({ section }) => (
+                        <Text style={Style.SectionHeaderStyle}> {section.title} </Text>
+                    )}
+                    renderItem={this._renderItem}
+                    keyExtractor={this._keyExtractor}
+                />
+                <AwesomeAlert
+                    alertContainerStyle={{ borderRadius: 2 }}
+                    show={this.state.showAlert}
+                    showProgress={false}
+                    title={this.state.alertTitle}
+                    message={this.state.alertMessage}
+                    messageStyle={{ textAlign: 'center', color: 'red' }}
+                    closeOnTouchOutside={true}
+                    closeOnHardwareBackPress={false}
+                    showCancelButton={false}
+                    showConfirmButton={true}
+                    confirmButtonStyle={Style.btnPrimary}
+                    confirmText='OK, GOT IT!'
+                    onCancelPressed={() => {
+                        this._hideAlert()
+                    }}
+                    onConfirmPressed={() => {
+                        this._hideAlert()
+                    }}
+                />
+            </View>
+        )
+    }
+}
+
 const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
+    
     const { loading, reservations } = data
 
     if (!reservations) return loading
@@ -42,110 +155,8 @@ const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
         }
     )
 
-    console.log('hiltonHotels', hiltonHotels)
+    return (<ReservationSectionList sections={hiltonHotels} />)
 
-    const _keyExtractor = (item: any, index: any) => _.toString(index)
-
-    const _alert = (item: any) => {
-        let alertMsg = `ID: ${item.id} \n ${item.hotelName} \n ${item.name} \n Arrival: ${item.arrivalDate} \n Departure: ${item.departureDate}`
-        alert(alertMsg)
-    }
-
-    const _renderItem = ({ item }: any) => (
-        <View style={styles.card}>
-            <ListItem
-                title={item.name}
-                subtitle={
-                    <View style={styles.cardContent}>
-                        <View style={{ padding: 8, width: '100%', height: 48 }}>
-                            <Text>{item.hotelName}</Text>
-                            <Text style={{ fontSize: 11, color: 'gray' }}>{item.id}</Text>
-                        </View>
-                        <View style={{ padding: 8, width: '100%', height: 48 }}>
-                            <Text style={{ fontSize: 11 }}>Arrival: {item.arrivalDate}</Text>
-                            <Text style={{ fontSize: 11 }}>Depart: {item.arrivalDate}</Text>
-                        </View>
-                    </View>
-                }
-                bottomDivider={true}
-                onPress={() => {
-                    _alert(item)
-                }}
-            />
-        </View>
-    )
-
-    const _platformComponent = () => {
-        if (Platform.OS == 'ios') {
-            return (
-                <View style={styles.listHeaderComponent}>
-                    <Text style={styles.listHeaderText}></Text>
-                </View>
-            )
-        }
-        else {
-            return null
-        }
-    }
-
-    return (
-        <View style={Style.container}>
-            <SectionList
-                ListHeaderComponent={_platformComponent()}
-                sections={hiltonHotels}
-                renderSectionHeader={({ section }) => (
-                    <Text style={styles.SectionHeaderStyle}> {section.title} </Text>
-                )}
-                renderItem={_renderItem}
-                keyExtractor={_keyExtractor}
-            />
-        </View>
-    )
 })
 
 export default ReservationsList
-
-const styles = StyleSheet.create({
-    listHeaderComponent: {
-        height: 40,
-        color: 'white',
-        backgroundColor: '#EF5356'
-    },
-    listHeaderText: {
-        height: 40,
-        paddingTop: 24
-    },
-    SectionHeaderStyle: {
-        backgroundColor: '#EF5356',
-        fontSize: 10,
-        padding: 5,
-        color: 'white'
-    },
-
-    SectionListItemStyle: {
-        fontSize: 15,
-        padding: 20,
-        color: 'black',
-        backgroundColor: 'white'
-    },
-    card: {
-        color: 'white',
-        shadowColor: 'black',
-        shadowOffset: { width: 10, height: 10 },
-        shadowOpacity: 0.25,
-        shadowRadius: 24,
-        marginLeft: 8,
-        marginRight: 8,
-        marginTop: 4,
-        marginBottom: 4
-    },
-    cardContent: {
-        color: 'white',
-        shadowColor: 'black',
-        shadowOffset: { width: 10, height: 10 },
-        shadowOpacity: 0.75,
-        shadowRadius: 10,
-        borderRadius: 32,
-        margin: 0
-    }
-})

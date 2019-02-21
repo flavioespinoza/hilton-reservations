@@ -1,34 +1,46 @@
 import * as React from 'react'
-import { TabNavigator } from 'react-navigation'
-import CreateReservation from './screens/CreateReservation/CreateReservation'
-import Reservations from './screens/Reservations/Reservations'
+import { Style } from './app.style'
+import MainNavigation from './navigation/MainNavigation/MainNavigaton'
 import ApolloClient from 'apollo-boost'
-import { ApolloProvider } from 'react-apollo'
-import { TabBarOptions } from './app.options'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 
-// Apollo client
+import { withClientState } from 'apollo-link-state'
+
+import { ApolloProvider, Query, graphql } from 'react-apollo'
+
+import gql from 'graphql-tag'
+
+const cache = new InMemoryCache();
+
 const client = new ApolloClient({
     uri: 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev',
+    cache,
     clientState: {
-        defaults: {},
-        resolvers: {},
-        typeDefs: {}
+        defaults: {
+            isConnected: true
+        },
+        resolvers: {
+            Mutation: {
+                updateNetworkStatus: (_: any, { isConnected }: any, { cache }: any) => {
+                    cache.writeData({ data: { isConnected } })
+                    return null
+                }
+            }
+        }
     }
 })
 
-const Tabs = TabNavigator(
-    {
-        ['Reservations']: { screen: Reservations },
-        ['Create Reservation']: { screen: CreateReservation }
-    },
-    TabBarOptions
-)
+const UPDATE_NETWORK_STATUS = gql`
+    mutation updateNetworkStatus($isConnected: Boolean) {
+        updateNetworkStatus(isConnected: $isConnected) @client
+    }
+`
 
 class App extends React.Component {
     render() {
         return (
             <ApolloProvider client={client}>
-                <Tabs />
+                <MainNavigation />
             </ApolloProvider>
         )
     }

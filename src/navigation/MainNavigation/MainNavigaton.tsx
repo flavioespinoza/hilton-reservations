@@ -1,3 +1,7 @@
+import { TabNavigator } from 'react-navigation'
+import CreateReservation from '../../screens/CreateReservation/CreateReservation'
+import Reservations from '../../screens/Reservations/Reservations'
+
 const TabBarOptions = {
     tabBarOptions: {
         activeTintColor: '#EF5356',
@@ -24,4 +28,12 @@ const TabBarOptions = {
     swipeEnabled: true
 }
 
-export { TabBarOptions }
+const MainNavigation = TabNavigator(
+    {
+        ['Reservations']: { screen: Reservations },
+        ['Create Reservation']: { screen: CreateReservation }
+    },
+    TabBarOptions
+)
+
+export default MainNavigation
