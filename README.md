@@ -41,9 +41,9 @@ yarn start:ios
 react-native run-ios
 ```
 
-<img src='docs/img/balls.png' width='45%' />
+<img src='docs/img/ios.png' width='100%' />
 
-<img src='docs/img/screen_2.png' width='45%' />
+
 
 ## Running on a device
 The above command will automatically run your app on the iOS Simulator by default. If you want to run the app on an actual physical iOS device, [PLEASE FOLLOW THESE INSTUCTIONS](https://facebook.github.io/react-native/docs/running-on-device)
