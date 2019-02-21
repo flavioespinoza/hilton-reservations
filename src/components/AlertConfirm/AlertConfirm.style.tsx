@@ -102,7 +102,7 @@ const Style = StyleSheet.create({
     },
     cancelReservationBtn: { 
         marginTop: 12,
-        width: '70%', 
+        width: '80%', 
         height: 40, 
         borderRadius: 4,
         ...$Color.cancel.bg
@@ -116,7 +116,7 @@ const Style = StyleSheet.create({
     },
     confirmReservationBtn: { 
         marginTop: 28,
-        width: '70%', 
+        width: '80%', 
         height: 40, 
         borderRadius: 4,
         ...$Color.primary.bg

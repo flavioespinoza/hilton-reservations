@@ -19,6 +19,10 @@ function _getHotelList() {
         {
             label: 'Hilton Paris Opera',
             value: 'Hilton Paris Opera',
+        },
+        {
+            label: 'Bikini Bottom Hilton',
+            value: 'Bikini Bottom Hilton',
         }
     ]
 }
