@@ -1,10 +1,67 @@
-<h1>Hilton Reservations</h1> 
+# Hilton Reservations
 
-[!["VIEW ON GITHUB"](docs/img/github_logo.png) View on the Hub that is Git](https://github.com/flavioespinoza/hilton_reservations)
+__Pre requesites__
+https://facebook.github.io/react-native/docs/getting-started
+
+## Let's do this
+
+
+Clone the repo
+```bash
+git clone https://github.com/flavioespinoza/hilton_reservations.git
+```
+
+
+cd into directory 
+```bash
+cd hilton_reservations
+```
+
+
+Install with yarn or npm 
+```bash
+yarn install
+```
+
+
+## Run  on XCode's iPhone emulator
+```bash {.copy-clip}
+yarn start:ios
+
+"or"
+
+react-native run-ios
+```
+
+<img src='docs/img/balls.png' width='49%' />
+
+<img src='docs/img/screen_2.png' width='49%' />
+
+## Running on a device
+The above command will automatically run your app on the iOS Simulator by default. If you want to run the app on an actual physical iOS device, [PLEASE FOLLOW THESE INSTUCTIONS](https://facebook.github.io/react-native/docs/running-on-device)
+
+
+## Running on an Android emulator
+
+__[Genymotion has the best one for mac folks](https://www.genymotion.com/)__
+
+<img src='docs/img/geny_1.png'>
+
+## After installing Genymotion start a virtual Android device from Genymotion's large selection
+
+When the Android emulator is up and running the app
+
+```bash {.copy-clip}
+yarn start: android
+```
+
+--
 
 ---
 
-### Creating GraphQL queries and mutations with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">ES6 Template Literals</a>
+# Creating GraphQL queries and mutations with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">ES6 Template Literals</a>
+
+I love literals :)
 
 ```Typescript
 
@@ -167,11 +224,11 @@ export default App
 
 <img style="margin-top: 12px" src="react-native-hilton-reservations.png" width="100%">
 
-
 ### Translating GraphQL schemas to TypeScript
 _schema.graphql_
 
 ```ruby
+
 type Mutation {
     createReservation(data: ReservationCreateInput!): Reservation!
     updateReservation(data: ReservationUpdateInput!, where: ReservationWhereUniqueInput!): Reservation
@@ -184,11 +241,13 @@ type Mutation {
     updateManyReservations(data: ReservationUpdateManyMutationInput!, where: ReservationWhereInput): BatchPayload!
     deleteManyReservations(where: ReservationWhereInput): BatchPayload!
 }
+
 ```
 
 _schema.ts_
 
 ```typescript
+
 const MUTATION = {
     createReservation($data: ReservationCreateInput): Reservation
     updateReservation($data: ReservationUpdateInput, $where: ReservationWhereUniqueInput): Reservation
@@ -203,4 +262,8 @@ const MUTATION = {
 }
 
 type Mutatation = MUTATION
+
 ```
+
+
+
