@@ -1,18 +1,19 @@
-function _reservations() {
-    return `
-    {
-        reservations {
-            name
-            hotelName
-            arrivalDate
-            departureDate
-            id
+const _QueryReservations = async () => {
+    return 
+    `
+        {
+            reservations {
+                name
+                hotelName
+                arrivalDate
+                departureDate
+                id
+            }
         }
-    }
-`
+    `
 }
 
-function _createReservation(name: string, hotel: string, arrivalDate: string, departureDate: string) {
+const _MutationCreateReservation = async (name: string, hotel: string, arrivalDate: string, departureDate: string) => {
     return `
         mutation {
             createReservation(
@@ -34,4 +35,7 @@ function _createReservation(name: string, hotel: string, arrivalDate: string, de
     `
 }
 
-export { _createReservation, _reservations }
+export {
+    _QueryReservations,
+    _MutationCreateReservation,
+}

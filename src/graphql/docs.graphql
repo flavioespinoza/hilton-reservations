@@ -1,0 +1,24 @@
+type Mutation {
+# Arguments
+# data: [NULL]
+createReservation(data: ReservationCreateInput!): Reservation!
+# Arguments
+# data: [NULL]
+# where: [NULL]
+updateReservation(data: ReservationUpdateInput!, where: ReservationWhereUniqueInput!): Reservation
+# Arguments
+# where: [NULL]
+deleteReservation(where: ReservationWhereUniqueInput!): Reservation
+# Arguments
+# where: [NULL]
+# create: [NULL]
+# update: [NULL]
+upsertReservation(where: ReservationWhereUniqueInput!, create: ReservationCreateInput!, update: ReservationUpdateInput!): Reservation!
+# Arguments
+# data: [NULL]
+# where:
+updateManyReservations(data: ReservationUpdateManyMutationInput!, where: ReservationWhereInput): BatchPayload!
+# Arguments
+# where:
+deleteManyReservations(where: ReservationWhereInput): BatchPayload!
+}
