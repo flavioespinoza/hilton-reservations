@@ -39,9 +39,20 @@ react-native run-ios
 ## Running on a device
 The above command will automatically run your app on the iOS Simulator by default. If you want to run the app on an actual physical iOS device, [PLEASE FOLLOW THESE INSTUCTIONS](https://facebook.github.io/react-native/docs/running-on-device)
 
+
+## Running on an Android emulator
+
+__[Genymotion has the best one for mac folks](https://www.genymotion.com/)__
+
+<img src='docs/img/geny_1.png'>
+
+--
+
 ---
 
-#### Creating GraphQL queries and mutations with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">ES6 Template Literals</a>
+# Creating GraphQL queries and mutations with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">ES6 Template Literals</a>
+
+I love literals :)
 
 ```Typescript
 
