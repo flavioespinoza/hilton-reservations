@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native'
 import { $Color } from '../../utils/styleMixins'
 
 const Style = StyleSheet.create({
-    
     alertTitle: {
         width: '100%',
         marginLeft: -30,
@@ -117,16 +116,22 @@ const Style = StyleSheet.create({
     confirmReservationBtn: { 
         marginTop: 28,
         width: '80%', 
-        height: 40, 
-        borderRadius: 4,
-        ...$Color.primary.bg
+        height: 44, 
+        backgroundColor: 'white', 
+        color: '#EF5356',
+        borderColor: '#EF5356',
+        borderWidth: 1,
+        borderRadius: 3
     },
     keepReservationBtn: { 
         marginTop: 32,
         width: '80%', 
-        height: 40, 
-        borderRadius: 4,
-        ...$Color.primary.bg
+        height: 44, 
+        backgroundColor: 'white', 
+        color: '#EF5356',
+        borderColor: '#EF5356',
+        borderWidth: 1,
+        borderRadius: 3
     },
     alertBtn: {
         textAlign: 'center',

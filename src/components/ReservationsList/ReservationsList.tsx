@@ -160,11 +160,15 @@ class ReservationSectionList extends React.PureComponent<Props, State> {
     }
 }
 
+
+
 const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
     const { loading, reservations } = data
 
     if (!reservations) return loading
 
+    _.reverse(reservations)
+    
     _.remove(reservations, (obj: any) => Object.values(obj).includes(''))
 
     const hiltonHotels = _.map(

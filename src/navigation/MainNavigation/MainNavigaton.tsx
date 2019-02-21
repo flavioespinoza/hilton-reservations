@@ -32,6 +32,7 @@ const MainNavigation = TabNavigator(
     {
         ['Reservations']: { screen: Reservations },
         ['Create Reservation']: { screen: CreateReservation }
+        
     },
     TabBarOptions
 )

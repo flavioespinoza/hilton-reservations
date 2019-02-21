@@ -118,17 +118,29 @@ const Style = StyleSheet.create({
         marginTop: 28,
         width: '80%', 
         height: 40, 
-        borderRadius: 4,
-        ...$Color.primary.bg
+        backgroundColor: 'white', 
+        color: '#EF5356',
+        borderColor: '#EF5356',
+        borderWidth: 1,
+        borderRadius: 3
     },
     keepReservationBtn: { 
         marginTop: 32,
         width: '80%', 
         height: 40, 
-        borderRadius: 4,
-        ...$Color.primary.bg
+        backgroundColor: 'white', 
+        color: '#EF5356',
+        borderColor: '#EF5356',
+        borderWidth: 1,
+        borderRadius: 3
     },
     alertBtn: {
+        textAlign: 'center',
+        fontSize: 16,
+        color: '#EF5356',
+        paddingTop: 9
+    },
+    alertCanelBtn: {
         textAlign: 'center',
         fontSize: 16,
         color: 'white',

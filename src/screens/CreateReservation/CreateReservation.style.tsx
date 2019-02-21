@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native'
 import { $DateInput, $TextInput, $Color } from '../../utils/styleMixins'
 import { $Device } from '../../utils/styleMixins'
 
+
+
 const StyleDeviceSpecific = StyleSheet.create({
     inputIOS: {
         ...$Device.selection.ios
@@ -12,10 +14,30 @@ const StyleDeviceSpecific = StyleSheet.create({
 })
 
 const Style = StyleSheet.create({
+    btnText: {
+        textAlign: 'center',
+        fontSize: 16,
+        color: '#EF5356',
+        paddingTop: 9
+    },
+    bookReservationBtn: { 
+        textAlign: 'center',
+        marginTop: 12,
+        width: '60%', 
+        height: 44, 
+        backgroundColor: 'white', 
+        color: '#EF5356',
+        borderColor: '#EF5356',
+        borderWidth: 1,
+        borderRadius: 3
+    },
     btnPrimary: {
-        ...$Color.primary.bg, 
-        color: '#fff',
-        borderRadius: 2
+        backgroundColor: 'white', 
+        color: '#EF5356',
+        height: 44, 
+        borderColor: '#EF5356',
+        borderWidth: 1,
+        borderRadius: 3
     },
     placeholderText: {
         color: '#ccc'

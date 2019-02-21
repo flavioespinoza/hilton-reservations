@@ -1,6 +1,6 @@
 /// <reference path='../../index.d.ts' />
 import * as React from 'react'
-import { View, TextInput, Text, AsyncStorage } from 'react-native'
+import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { DateSelection } from '../../components/DateSelection/DateSelection'
 import { Button } from 'react-native-elements'
 import { Style } from './CreateReservation.style'
@@ -26,11 +26,6 @@ interface State {
     showAlert: boolean
     alertMessage: string | undefined
     alertTitle: string | undefined
-    text_1: string | undefined
-    text_2: string | undefined
-    pickerOpacity: number
-    opacityOfOtherItems: number
-    textInputValue: string
     hotelItems: [] | any
     submit: boolean
     createReservationQuery: string | undefined
@@ -63,11 +58,6 @@ class CreateReservation extends React.PureComponent<Props, State> {
             showAlert: false,
             alertMessage: undefined,
             alertTitle: undefined,
-            text_1: 'Text 1',
-            text_2: 'Text 2',
-            pickerOpacity: 0,
-            opacityOfOtherItems: 1,
-            textInputValue: 'hello textInputValue',
             hotelItems: [],
             submit: false,
             createReservationQuery: undefined,
@@ -297,7 +287,11 @@ class CreateReservation extends React.PureComponent<Props, State> {
                     value={this.state.lastName}
                 />
 
-                <Button title={'Create Reservation'} type={'outline'} onPress={this._createReservation} />
+                <TouchableOpacity
+                    style={Style.bookReservationBtn}
+                    onPress={this._createReservation} >
+                        <Text style={Style.btnText}>Book reservation</Text>
+                    </TouchableOpacity>
 
                 <View style={{ padding: 12 }}>
                     {this.state.firstName ? <Text>{this.state.firstName}</Text> : null}

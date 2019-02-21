@@ -170,7 +170,7 @@ class AlertConfirm extends React.PureComponent<Props, State> {
                                                 this._confirmCancelReservation(this.props.stateProps)
                                             }}
                                         >
-                                            <Text style={Style.alertBtn}>Yes, Cancel Reservation</Text>
+                                            <Text style={Style.alertCanelBtn}>Yes, Cancel Reservation</Text>
                                         </TouchableOpacity>
                                         <View style={{ width: '10%', height: 40 }} />
                                     </View>
@@ -183,7 +183,7 @@ class AlertConfirm extends React.PureComponent<Props, State> {
                                                 this._cancelReservation()
                                             }}
                                         >
-                                            <Text style={Style.alertBtn}>Cancel Reservation</Text>
+                                            <Text style={Style.alertCanelBtn}>Cancel Reservation</Text>
                                         </TouchableOpacity>
                                         <View style={{ width: '10%', height: 40 }} />
                                     </View>
