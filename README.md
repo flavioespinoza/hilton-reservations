@@ -47,6 +47,14 @@ __[Genymotion has the best one for mac folks](https://www.genymotion.com/)__
 
 <img src='docs/img/geny_1.png'>
 
+## After installing Genymotion start a virtual Android device from Genymotion's large selection
+
+When the Android emulator is up and running the app
+
+```bash {.copy-clip}
+yarn start: android
+```
+
 --
 
 ---

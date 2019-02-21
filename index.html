@@ -209,13 +209,26 @@ code.language-css .token.selector > .token.pseudo-element {
   overflow: auto;
 }
 .markdown-preview.markdown-preview p {
-  margin-bottom: -6px;
-  margin-top: 12px;
+  margin-bottom: 0;
+  margin-top: 18px;
 }
 .markdown-preview.markdown-preview .language-shell .token.function,
 .markdown-preview.markdown-preview .language-shell .token.char,
 .markdown-preview.markdown-preview .language-shell .token.string {
   color: gainsboro;
+}
+.markdown-preview.markdown-preview a.git-hub-logo-link {
+  background-color: pink;
+  height: 500px !important;
+  overflow: hidden;
+}
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5 {
+  margin-bottom: -4px;
+  padding-bottom: 0;
 }
  
       </style>
@@ -224,8 +237,37 @@ code.language-css .token.selector > .token.pseudo-element {
       <div class="mume markdown-preview   ">
       <h1 class="mume-header" id="hilton-reservations">Hilton Reservations</h1>
 
-<h3 class="mume-header" id="creating-graphql-queries-and-mutations-with-a-hrefhttpsdevelopermozillaorgen-usdocswebjavascriptreferencetemplate_literals-target_blankes6-template-literalsa">Creating GraphQL queries and mutations with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">ES6 Template Literals</a></h3>
+<p><strong>Pre requesites</strong><br>
+<a href="https://facebook.github.io/react-native/docs/getting-started">https://facebook.github.io/react-native/docs/getting-started</a></p>
+<h2 class="mume-header" id="lets-do-this">Let&apos;s do this</h2>
 
+<p>Clone the repo</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token function">git</span> clone https://github.com/flavioespinoza/hilton_reservations.git
+</pre><p>cd into directory</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token function">cd</span> hilton_reservations
+</pre><p>Install with yarn or npm</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash">yarn <span class="token function">install</span>
+</pre><h2 class="mume-header" id="run-on-xcodes-iphone-emulator">Run  on XCode&apos;s iPhone emulator</h2>
+
+<pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">yarn start:ios
+
+<span class="token string">&quot;or&quot;</span>
+
+react-native run-ios
+</pre><img src="docs/img/balls.png" width="49%">
+<img src="docs/img/screen_2.png" width="49%">
+<h2 class="mume-header" id="running-on-a-device">Running on a device</h2>
+
+<p>The above command will automatically run your app on the iOS Simulator by default. If you want to run the app on an actual physical iOS device, <a href="https://facebook.github.io/react-native/docs/running-on-device">PLEASE FOLLOW THESE INSTUCTIONS</a></p>
+<h2 class="mume-header" id="running-on-an-android-emulator">Running on an Android emulator</h2>
+
+<p><strong><a href="https://www.genymotion.com/">Genymotion has the best one for mac folks</a></strong></p>
+<img src="docs/img/geny_1.png">
+<p>--</p>
+<hr>
+<h1 class="mume-header" id="creating-graphql-queries-and-mutations-with-a-hrefhttpsdevelopermozillaorgen-usdocswebjavascriptreferencetemplate_literals-target_blankes6-template-literalsa">Creating GraphQL queries and mutations with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank">ES6 Template Literals</a></h1>
+
+<p>I love literals &#x1F603;</p>
 <pre data-role="codeBlock" data-info="Typescript" class="language-typescript"><span class="token constant">NOTE</span><span class="token punctuation">:</span> All files are TypeScript<span class="token punctuation">.</span>ts or TypeScript React<span class="token punctuation">.</span>tsx
 
 <span class="token keyword">const</span> <span class="token function-variable function">_QueryReservations</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -390,6 +432,7 @@ code.language-css .token.selector > .token.pseudo-element {
     <span class="token function">updateManyReservations</span><span class="token punctuation">(</span>data<span class="token punctuation">:</span> <span class="token constant">ReservationUpdateManyMutationInput!</span><span class="token punctuation">,</span> where<span class="token punctuation">:</span> <span class="token constant">ReservationWhereInput</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token constant">BatchPayload!</span>
     <span class="token function">deleteManyReservations</span><span class="token punctuation">(</span>where<span class="token punctuation">:</span> <span class="token constant">ReservationWhereInput</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token constant">BatchPayload!</span>
 <span class="token punctuation">}</span>
+
 </pre><p><em>schema.ts</em></p>
 <pre data-role="codeBlock" data-info="typescript" class="language-typescript"><span class="token keyword">const</span> <span class="token constant">MUTATION</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token function">createReservation</span><span class="token punctuation">(</span>$data<span class="token punctuation">:</span> ReservationCreateInput<span class="token punctuation">)</span><span class="token punctuation">:</span> Reservation
@@ -405,11 +448,19 @@ code.language-css .token.selector > .token.pseudo-element {
 <span class="token punctuation">}</span>
 
 <span class="token keyword">type</span> Mutatation <span class="token operator">=</span> <span class="token constant">MUTATION</span>
+
 </pre>
       </div>
       <div class="md-sidebar-toc"><ul>
-<li><a href="#hilton-reservations">Hilton Reservations</a><br>
-* <a href="#creating-graphql-queries-and-mutations-with-a-hrefhttpsdevelopermozillaorgen-usdocswebjavascriptreferencetemplate_literals-target_blankes6-template-literalsa">Creating GraphQL queries and mutations with ES6 Template Literals</a><br>
+<li><a href="#hilton-reservations">Hilton Reservations</a>
+<ul>
+<li><a href="#lets-do-this">Let&apos;s do this</a></li>
+<li><a href="#run-on-xcodes-iphone-emulator">Run  on XCode&apos;s iPhone emulator</a></li>
+<li><a href="#running-on-a-device">Running on a device</a></li>
+<li><a href="#running-on-an-android-emulator">Running on an Android emulator</a></li>
+</ul>
+</li>
+<li><a href="#creating-graphql-queries-and-mutations-with-a-hrefhttpsdevelopermozillaorgen-usdocswebjavascriptreferencetemplate_literals-target_blankes6-template-literalsa">Creating GraphQL queries and mutations with ES6 Template Literals</a><br>
 * <a href="#local-state-mgt-with-react-native-apollo-client-and-template-literal-rest-mutations">Local State Mgt with React-Native, Apollo-Client, and Template Literal REST Mutations</a>
 <ul>
 <li><a href="#results-android-and-ios-app-with-the-same-codebase">Results! Android and iOS app with the same codebase!</a>
