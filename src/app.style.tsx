@@ -1,6 +1,5 @@
-import * as React from 'react'
 import { StyleSheet } from 'react-native'
-import { $ContainerBase, $DateInput, $TextInput, $Color } from './utils/styleMixins'
+import { $DateInput, $TextInput, $Color } from './utils/styleMixins'
 
 const styles = StyleSheet.create({
     SectionHeaderStyle: {
