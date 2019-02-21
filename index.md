@@ -1,8 +1,14 @@
 # Hilton Reservations
 
-[View on GitHub](docs/img/github_logo.png)
+<div class="light-header">
 
-[<img src="docs/img/github_logo.png">](https://github.com/flavioespinoza/hilton_reservations)
+<a href="https://github.com/flavioespinoza/hilton_reservations" target="_blank">
+
+<img width="100%" src="docs/img/light_header.png">
+
+</a>
+
+</div>
 
 <p>................................................................................................</p>
 
