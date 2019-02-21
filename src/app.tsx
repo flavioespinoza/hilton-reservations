@@ -1,54 +1,65 @@
 import * as React from 'react'
-import { TabNavigator } from 'react-navigation'
-import CreateReservation from './screens/CreateReservation/CreateReservation'
-import Reservations from './screens/Reservations/Reservations'
+import { Style } from './app.style'
+import MainNavigation from './navigation/MainNavigation/MainNavigaton'
 import ApolloClient from 'apollo-boost'
-import { ApolloProvider } from 'react-apollo'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 
-// Apollo client
+import { withClientState } from 'apollo-link-state'
+
+import { ApolloProvider, Query, graphql } from 'react-apollo'
+
+import gql from 'graphql-tag'
+
+const cache = new InMemoryCache();
+
+const typeDefs = `
+    type Todo {
+        id: Int!
+        text: String!
+        completed: Boolean!
+    }
+
+    type Mutation {
+        addTodo(text: String!): Todo
+        toggleTodo(id: Int!): Todo
+    }
+
+    type Query {
+        visibilityFilter: String
+        todos: [Todo]
+    }
+`
+
 const client = new ApolloClient({
-    uri: 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
+    uri: 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev',
+    cache,
+    clientState: {
+        defaults: {
+            isConnected: true
+        },
+        resolvers: {
+            Mutation: {
+                updateNetworkStatus: (_: any, { isConnected }: any, { cache }: any) => {
+                    cache.writeData({ data: { isConnected } })
+                    return null
+                }
+            }
+        },
+        typeDefs: typeDefs
+    }
 })
 
-const tabBarOptions = {
-    tabBarOptions: {
-        activeTintColor: '#EF5356',
-        allowFontScaling: true,
-        inactiveTintColor: 'gray',
-        pressColor: '#EF5356',
-        pressOpacity: 0.5,
-        showIcon: false,
-        showLabel: true,
-        upperCaseLabel: true,
-        indicatorStyle: {
-            backgroundColor: '#EF5356',
-            opacity: 100
-        },
-        activeTabStyle: {
-            backgroundColor: 'red'
-        },
-        style: {
-            backgroundColor: 'white'
-        }
-    },
-    animationEnabled: true,
-    tabBarVisible: true,
-    swipeEnabled: true
-}
-
-const Tabs = TabNavigator(
-    {
-        ['Reservations']: { screen: Reservations },
-        ['Create Reservation']: { screen: CreateReservation }
-    },
-    tabBarOptions
-)
+const UPDATE_NETWORK_STATUS = gql`
+    mutation updateNetworkStatus($isConnected: Boolean) {
+        updateNetworkStatus(isConnected: $isConnected) @client
+    }
+`
 
 class App extends React.Component {
     render() {
         return (
             <ApolloProvider client={client}>
-                <Tabs />
+                <MainNavigation />
             </ApolloProvider>
         )
     }
