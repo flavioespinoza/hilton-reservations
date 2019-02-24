@@ -74,6 +74,7 @@ const _MutationCreateReservation = async (name: string, hotel: string, arrivalDa
     `
 }
 
+
 export {
     _QuerySendReservation,
     _QueryReservations,
