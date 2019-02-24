@@ -1,0 +1,20 @@
+subscription reservation($where: ReservationSubscriptionWhereInput){
+    reservation(where: $where){
+        mutation
+        node{
+            id
+            name
+            hotelName
+            arrivalDate
+            departureDate
+        }
+        updatedFields
+        previousValues{
+            id
+            name
+            hotelName
+            arrivalDate
+            departureDate
+        }
+    }
+}
