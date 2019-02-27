@@ -8,7 +8,7 @@ const INPUT = {
     departureDate: '2/1/1'
 }
 
-const CHECK_MUTATION = obj => {
+const CHECK_MUTATION_CREATE_RESERVATION = obj => {
     return `
         mutation {
             createReservation(
@@ -32,9 +32,9 @@ const CHECK_MUTATION = obj => {
 
 describe('mutation create reservation', function() {
     
-    it ('should deep equal CHECK_MUTATION', async function (done) {
+    it ('should deep equal CHECK_MUTATION_CREATE_RESERVATION', async function (done) {
         let mutation_create_reservation = await _MutationCreateReservation(INPUT.name, INPUT.hotelName, INPUT.arrivalDate, INPUT.departureDate)
-        deepEqual(CHECK_MUTATION(), mutation_create_reservation)
+        deepEqual(CHECK_MUTATION_CREATE_RESERVATION(), mutation_create_reservation)
         done()
     })
 
