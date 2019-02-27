@@ -1,4 +1,4 @@
-import { equal, notEqual, deepEqual } from 'assert'
+import { deepEqual } from 'assert'
 import { _QueryReservations } from './query'
 
 const CHECK_QUERY_RESERVATIONS = () => {

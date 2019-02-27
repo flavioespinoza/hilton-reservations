@@ -4,7 +4,7 @@ import moxios from 'moxios'
 import sinon from 'sinon'
 
 const USER_FRED = {
-    hotelName: 'Bedrock Hilton',
+    hotelName: 'Unit Test Axios Hilton',
     firstName: 'Fred',
     lastName: 'Flintstone',
     arrivalDate: '1/1/1',
@@ -12,42 +12,6 @@ const USER_FRED = {
 }
 
 const _URI = 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
-
-const _MutationCreateReservation = obj => {
-    return `
-        mutation {
-            createReservation(
-                data: {
-                    name: "${obj.name}"
-                    hotelName: "${obj.hotelName}"
-                    arrivalDate: "${obj.arrivalDate}"
-                    departureDate: "${obj.departureDate}"
-                }
-            ) 
-            {
-                id
-                name
-                hotelName
-                arrivalDate
-                departureDate
-            }
-        }
-    `
-}
-
-const _QueryReservations = () => {
-    return `
-        {
-            reservations {
-                name
-                hotelName
-                arrivalDate
-                departureDate
-                id
-            }
-        }
-    `
-}
 
 describe('moxios', function() {
     it('should install', function() {

@@ -1,4 +1,4 @@
-import { equal, notEqual, deepEqual } from 'assert'
+import { deepEqual } from 'assert'
 import { _MutationCreateReservation } from './mutation'
 
 const INPUT = {
