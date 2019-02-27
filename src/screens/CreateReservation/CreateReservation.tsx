@@ -3,12 +3,11 @@ import * as React from 'react'
 import { Style } from './CreateReservation.style'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { DateSelection } from '../../components/DateSelection/DateSelection'
-import { _URI, _MutationCreateReservation } from '../../api/api'
+import { _URI, _MutationCreateReservation, _QueryHotelList } from '../../api/api'
 import _formatDate from '../../utils/formatDate'
 import _ from 'lodash'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import PickerModal from '../../components/ModalPicker/ModalPicker'
-import { _getHotelList } from '../../api/getHotelList'
 import axios from 'axios'
 
 interface Props {}
@@ -70,7 +69,7 @@ class CreateReservation extends React.PureComponent<Props, State> {
     }
 
     componentDidMount() {
-        let _hotel_list = _getHotelList()
+        let _hotel_list = _QueryHotelList()
         this.setState({
             hotelItems: _hotel_list
         })
@@ -151,29 +150,31 @@ class CreateReservation extends React.PureComponent<Props, State> {
     }
 
     private _sendReservation = (obj: any): void => {
+        let mutation = _MutationCreateReservation(obj)
+
         axios({
             url: _URI,
             method: 'post',
             data: {
-                query: _MutationCreateReservation(obj)
+                query: mutation
             }
         })
-            .then(res => {
-                let reservation = res.data.data.createReservation
-                let confirmation = {
-                    confirm_arrivalDate: reservation.arrivalDate,
-                    confirm_departureDate: reservation.departureDate,
-                    confirm_hotelName: reservation.hotelName,
-                    confirm_id: reservation.id,
-                    confirm_name: reservation.name
-                }
-                this.setState(confirmation)
-                this._clearState()
-            })
-            .catch(err => {
-                console.error(err)
-                alert(err.message)
-            })
+        .then(res => {
+            let reservation = res.data.data.createReservation
+            let confirmation = {
+                confirm_arrivalDate: reservation.arrivalDate,
+                confirm_departureDate: reservation.departureDate,
+                confirm_hotelName: reservation.hotelName,
+                confirm_id: reservation.id,
+                confirm_name: reservation.name
+            }
+            this.setState(confirmation)
+            this._clearState()
+        })
+        .catch(err => {
+            console.error(err)
+            alert(err.message)
+        })
     }
 
     private _createReservation = (): void => {

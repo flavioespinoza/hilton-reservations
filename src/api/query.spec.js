@@ -17,8 +17,8 @@ const CHECK_QUERY_RESERVATIONS = () => {
 
 describe('query reservations', () => {
     
-    it ('should deep equal CHECK_QUERY_RESERVATIONS', async (done) => {
-        let query_reservations = await _QueryReservations()
+    it ('should deep equal CHECK_QUERY_RESERVATIONS', (done) => {
+        let query_reservations = _QueryReservations()
         deepEqual(CHECK_QUERY_RESERVATIONS(), query_reservations)
         done()
     })

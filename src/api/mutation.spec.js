@@ -33,8 +33,8 @@ const CHECK_MUTATION_CREATE_RESERVATION = () => {
 
 describe('mutation create reservation', () => {
     
-    it ('should deep equal CHECK_MUTATION_CREATE_RESERVATION', async (done) => {
-        let mutation_create_reservation = await _MutationCreateReservation(INPUT)
+    it ('should deep equal CHECK_MUTATION_CREATE_RESERVATION', (done) => {
+        let mutation_create_reservation = _MutationCreateReservation(INPUT)
         deepEqual(CHECK_MUTATION_CREATE_RESERVATION(), mutation_create_reservation)
         done()
     })
