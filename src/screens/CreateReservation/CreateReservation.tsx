@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { DateSelection } from '../../components/DateSelection/DateSelection'
-import { Button } from 'react-native-elements'
+import { _URI, _MutationCreateReservation } from '../../api/api'
 import { Style } from './CreateReservation.style'
 import _formatDate from '../../utils/formatDate'
 import _ from 'lodash'
@@ -151,30 +151,11 @@ class CreateReservation extends React.PureComponent<Props, State> {
     }
 
     private _sendReservation = (obj: any): void => {
-        const _endpoint = 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
-
         axios({
-            url: _endpoint,
+            url: _URI,
             method: 'post',
             data: {
-                query: `
-					mutation {
-						createReservation(
-							data: {
-									name: "${obj.firstName} ${obj.lastName}"
-									hotelName: "${obj.hotelName}"
-									arrivalDate: "${obj.arrivalDate}"
-									departureDate: "${obj.departureDate}"
-							}
-						)   {
-							id
-							name
-							hotelName
-							arrivalDate
-							departureDate
-						}
-					}
-			`
+                query: _MutationCreateReservation(obj)
             }
         })
         .then(res => {
