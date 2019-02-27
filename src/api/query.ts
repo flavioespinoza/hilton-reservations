@@ -1,4 +1,4 @@
-const _QueryHotelList = async () => {
+const _QueryHotelList = () => {
     return [
         {
             label: 'Hilton NYC',
@@ -27,7 +27,7 @@ const _QueryHotelList = async () => {
     ]
 }
 
-const _QueryReservations = async () => {
+const _QueryReservations = () => {
     return `
         {
             reservations {

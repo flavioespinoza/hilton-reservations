@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const _MutationCreateReservation = async (obj: any) => {
+const _MutationCreateReservation = (obj: any) => {
     return `
         mutation {
             createReservation(
