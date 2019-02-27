@@ -4,7 +4,7 @@ import moxios from 'moxios'
 import sinon from 'sinon'
 
 const USER_FRED = {
-    hotelName: 'Bedrock Hilton',
+    hotelName: 'Unit Test Axios Hilton',
     firstName: 'Fred',
     lastName: 'Flintstone',
     arrivalDate: '1/1/1',
@@ -12,42 +12,6 @@ const USER_FRED = {
 }
 
 const _URI = 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
-
-const _MutationCreateReservation = obj => {
-    return `
-        mutation {
-            createReservation(
-                data: {
-                    name: "${obj.name}"
-                    hotelName: "${obj.hotel}"
-                    arrivalDate: "${obj.arrivalDate}"
-                    departureDate: "${obj.departureDate}"
-                }
-            ) 
-            {
-                id
-                name
-                hotelName
-                arrivalDate
-                departureDate
-            }
-        }
-    `
-}
-
-const _QueryReservations = () => {
-    return `
-        {
-            reservations {
-                name
-                hotelName
-                arrivalDate
-                departureDate
-                id
-            }
-        }
-    `
-}
 
 describe('moxios', function() {
     it('should install', function() {
@@ -79,8 +43,7 @@ describe('moxios', function() {
         })
 
         it('should intercept requests', function(done) {
-            
-            axios.get('/reservations/12346')
+            axios.get('/users/12346')
 
             moxios.wait(function() {
                 let request = moxios.requests.mostRecent()
@@ -90,8 +53,7 @@ describe('moxios', function() {
         })
 
         it('should mock responses', function(done) {
-
-            axios.get('/reservations/12346').then(onFulfilled, onRejected)
+            axios.get('/users/12346').then(onFulfilled, onRejected)
 
             moxios.wait(function() {
                 let request = moxios.requests.mostRecent()
@@ -111,8 +73,7 @@ describe('moxios', function() {
         })
 
         it('should mock responses Error', function(done) {
-            
-            axios.get('/reservations/12346').then(onFulfilled, onRejected)
+            axios.get('/users/12346').then(onFulfilled, onRejected)
 
             moxios.wait(function() {
                 let request = moxios.requests.mostRecent()
@@ -193,12 +154,12 @@ describe('moxios', function() {
         })
 
         it('should stub requests RegExp', function(done) {
-            moxios.stubRequest(/\/reservations\/\d*/, {
+            moxios.stubRequest(/\/users\/\d*/, {
                 status: 200,
                 response: USER_FRED
             })
 
-            axios.get('/reservations/12346').then(onFulfilled)
+            axios.get('/users/12346').then(onFulfilled)
 
             moxios.wait(function() {
                 let response = onFulfilled.getCall(0).args[0]
@@ -209,11 +170,11 @@ describe('moxios', function() {
 
         describe('stubs', function() {
             it('should track multiple stub requests', function() {
-                moxios.stubOnce('PUT', '/reservations/12346', {
+                moxios.stubOnce('PUT', '/users/12346', {
                     status: 204
                 })
 
-                moxios.stubOnce('GET', '/reservations/12346', {
+                moxios.stubOnce('GET', '/users/12346', {
                     status: 200,
                     response: USER_FRED
                 })
@@ -222,96 +183,96 @@ describe('moxios', function() {
             })
 
             it('should find single stub by method', function() {
-                moxios.stubOnce('PUT', '/reservations/12346', {
+                moxios.stubOnce('PUT', '/users/12346', {
                     status: 204
                 })
 
-                moxios.stubOnce('GET', '/reservations/12346', {
+                moxios.stubOnce('GET', '/users/12346', {
                     status: 200,
                     response: USER_FRED
                 })
 
-                let request = moxios.stubs.get('PUT', '/reservations/12346')
+                let request = moxios.stubs.get('PUT', '/users/12346')
 
                 notEqual(request, undefined)
             })
 
             it('should remove a single stub by method', function() {
-                moxios.stubOnce('PUT', '/reservations/12346', {
+                moxios.stubOnce('PUT', '/users/12346', {
                     status: 204
                 })
 
-                moxios.stubOnce('GET', '/reservations/12346', {
+                moxios.stubOnce('GET', '/users/12346', {
                     status: 200,
                     response: USER_FRED
                 })
 
-                moxios.stubOnce('PUT', '/reservations/12346', {
+                moxios.stubOnce('PUT', '/users/12346', {
                     status: 204
                 })
 
-                moxios.stubOnce('GET', '/reservations/12346', {
+                moxios.stubOnce('GET', '/users/12346', {
                     status: 200,
                     response: USER_FRED
                 })
 
-                moxios.stubs.remove('PUT', '/reservations/12346')
+                moxios.stubs.remove('PUT', '/users/12346')
                 equal(moxios.stubs.count(), 3)
             })
 
             it('should not find request on invalid method', function() {
-                moxios.stubOnce('PUT', '/reservations/12346', {
+                moxios.stubOnce('PUT', '/users/12346', {
                     status: 204
                 })
 
-                moxios.stubOnce('GET', '/reservations/12346', {
+                moxios.stubOnce('GET', '/users/12346', {
                     status: 200,
                     response: USER_FRED
                 })
 
-                axios.put('/reservations/12346', USER_FRED)
+                axios.put('/users/12346', USER_FRED)
                 let request = moxios.requests.get('TEST')
 
                 equal(request, undefined)
             })
 
             it('should find request after multiple stubs using same URI', function(done) {
-                moxios.stubOnce('POST', '/reservations/12346', {
+                moxios.stubOnce('POST', '/users/12346', {
                     status: 204
                 })
 
-                moxios.stubOnce('PUT', '/reservations/12346', {
+                moxios.stubOnce('PUT', '/users/12346', {
                     status: 204
                 })
 
-                moxios.stubOnce('GET', '/reservations/12346', {
+                moxios.stubOnce('GET', '/users/12346', {
                     status: 200,
                     response: USER_FRED
                 })
 
-                axios.put('/reservations/12346', USER_FRED).then(onFulfilled)
+                axios.put('/users/12346', USER_FRED).then(onFulfilled)
 
                 moxios.wait(function() {
                     let response = onFulfilled.getCall(0).args[0]
                     equal(response.status, 204)
-                    let request = moxios.requests.get('PUT', '/reservations/12346')
+                    let request = moxios.requests.get('PUT', '/users/12346')
                     notEqual(request, undefined)
                     done()
                 })
             })
 
             it('Should stub and find multiple requests by method', function(done) {
-                moxios.stubOnce('PUT', '/reservations/12346', {
+                moxios.stubOnce('PUT', '/users/12346', {
                     status: 204
                 })
 
-                moxios.stubOnce('GET', '/reservations/12346', {
+                moxios.stubOnce('GET', '/users/12346', {
                     status: 200,
                     response: USER_FRED
                 })
 
-                axios.put('/reservations/12346', USER_FRED).then(onFulfilled)
-                axios.get('/reservations/12346', {}).then(onFulfilled)
+                axios.put('/users/12346', USER_FRED).then(onFulfilled)
+                axios.get('/users/12346', {}).then(onFulfilled)
 
                 moxios.wait(function() {
                     equal(onFulfilled.calledTwice, true)
@@ -322,10 +283,10 @@ describe('moxios', function() {
                     equal(response2.status, 200)
                     equal(response2.data.firstName, 'Fred')
 
-                    let request = moxios.requests.get('PUT', '/reservations/12346')
+                    let request = moxios.requests.get('PUT', '/users/12346')
                     notEqual(request, undefined)
 
-                    request = moxios.requests.get('GET', '/reservations/12346')
+                    request = moxios.requests.get('GET', '/users/12346')
                     notEqual(request, undefined)
 
                     done()

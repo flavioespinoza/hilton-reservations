@@ -1,6 +1,31 @@
-import axios from 'axios'
-
-const _URI = 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
+const _QueryHotelList = async () => {
+    return [
+        {
+            label: 'Hilton NYC',
+            value: 'Hilton NYC'
+        },
+        {
+            label: 'Hilton Brooklyn New York',
+            value: 'Hilton Brooklyn New York'
+        },
+        {
+            label: 'Hilton LAX',
+            value: 'Hilton LAX'
+        },
+        {
+            label: 'Hilton Miami Downtown',
+            value: 'Hilton Miami Downtown'
+        },
+        {
+            label: 'Hilton Paris Opera',
+            value: 'Hilton Paris Opera'
+        },
+        {
+            label: 'Bikini Bottom Hilton',
+            value: 'Bikini Bottom Hilton'
+        }
+    ]
+}
 
 const _QueryReservations = async () => {
     return `
@@ -16,66 +41,4 @@ const _QueryReservations = async () => {
     `
 }
 
-const _QueryCreateReservation = (obj: any) => {
-    return new Promise((resolve, reject) => {
-        return axios({
-            url: _URI,
-            method: 'post',
-            data: {
-                query: `
-                    mutation {
-                        createReservation(
-                            data: {
-                                    name: "${obj.firstName} ${obj.lastName}"
-                                    hotelName: "${obj.hotelName}"
-                                    arrivalDate: "${obj.arrivalDate}"
-                                    departureDate: "${obj.departureDate}"
-                            }
-                        )   {
-                            id
-                            name
-                            hotelName
-                            arrivalDate
-                            departureDate
-                        }
-                    }
-            `
-            }
-        })
-        .then(res => {
-            resolve(res)
-        })
-        .catch(err => {
-            reject(err)
-        })
-    })
-}
-
-const _MutationCreateReservation = async (name: string, hotel: string, arrivalDate: string, departureDate: string) => {
-    return `
-        mutation {
-            createReservation(
-                data: {
-                    name: "${name}"
-                    hotelName: "${hotel}"
-                    arrivalDate: "${arrivalDate}"
-                    departureDate: "${departureDate}"
-                }
-            ) 
-            {
-                id
-                name
-                hotelName
-                arrivalDate
-                departureDate
-            }
-        }
-    `
-}
-
-export {
-    _URI,
-    _QueryCreateReservation,
-    _QueryReservations,
-    _MutationCreateReservation,
-}
+export { _QueryHotelList, _QueryReservations }
