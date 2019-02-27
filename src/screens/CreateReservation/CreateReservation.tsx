@@ -1,9 +1,9 @@
 /// <reference path='../../index.d.ts' />
 import * as React from 'react'
+import { Style } from './CreateReservation.style'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { DateSelection } from '../../components/DateSelection/DateSelection'
 import { _URI, _MutationCreateReservation } from '../../api/api'
-import { Style } from './CreateReservation.style'
 import _formatDate from '../../utils/formatDate'
 import _ from 'lodash'
 import AwesomeAlert from 'react-native-awesome-alerts'
@@ -158,22 +158,22 @@ class CreateReservation extends React.PureComponent<Props, State> {
                 query: _MutationCreateReservation(obj)
             }
         })
-        .then(res => {
-            let reservation = res.data.data.createReservation
-            let confirmation = {
-                confirm_arrivalDate: reservation.arrivalDate,
-                confirm_departureDate: reservation.departureDate,
-                confirm_hotelName: reservation.hotelName,
-                confirm_id: reservation.id,
-                confirm_name: reservation.name
-            }
-            this.setState(confirmation)
-            this._clearState()
-        })
-        .catch(err => {
-            console.error(err)
-            alert(err.message)
-        })
+            .then(res => {
+                let reservation = res.data.data.createReservation
+                let confirmation = {
+                    confirm_arrivalDate: reservation.arrivalDate,
+                    confirm_departureDate: reservation.departureDate,
+                    confirm_hotelName: reservation.hotelName,
+                    confirm_id: reservation.id,
+                    confirm_name: reservation.name
+                }
+                this.setState(confirmation)
+                this._clearState()
+            })
+            .catch(err => {
+                console.error(err)
+                alert(err.message)
+            })
     }
 
     private _createReservation = (): void => {
@@ -268,11 +268,9 @@ class CreateReservation extends React.PureComponent<Props, State> {
                     value={this.state.lastName}
                 />
 
-                <TouchableOpacity
-                    style={Style.bookReservationBtn}
-                    onPress={this._createReservation} >
-                        <Text style={Style.btnText}>Book reservation</Text>
-                    </TouchableOpacity>
+                <TouchableOpacity style={Style.bookReservationBtn} onPress={this._createReservation}>
+                    <Text style={Style.btnText}>Book reservation</Text>
+                </TouchableOpacity>
 
                 <View style={{ padding: 12 }}>
                     {this.state.firstName ? <Text>{this.state.firstName}</Text> : null}
