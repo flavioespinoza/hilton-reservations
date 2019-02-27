@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const _MutationCreateReservation = async (name: string, hotel: string, arrivalDate: string, departureDate: string) => {
+const _MutationCreateReservation = async (name: string, hotelName: string, arrivalDate: string, departureDate: string) => {
     return `
         mutation {
             createReservation(
                 data: {
                     name: "${name}"
-                    hotelName: "${hotel}"
+                    hotelName: "${hotelName}"
                     arrivalDate: "${arrivalDate}"
                     departureDate: "${departureDate}"
                 }
@@ -21,3 +21,5 @@ const _MutationCreateReservation = async (name: string, hotel: string, arrivalDa
         }
     `
 }
+
+export { _MutationCreateReservation }
