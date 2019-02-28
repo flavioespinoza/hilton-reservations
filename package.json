@@ -8,8 +8,8 @@
         "start:ios": "react-native run-ios",
         "ts": "./node_modules/.bin/tsc --watch --pretty",
         "tsc": "node_modules/.bin/tsc",
-        "test": "jest -u",
-        "test:without-update": "jest"
+        "test": "jest -u --no-cache",
+        "test:wu": "jest --no-cache"
     },
     "dependencies": {},
     "devDependencies": {
@@ -69,16 +69,17 @@
         "tslint-config-airbnb": "^5.11.1",
         "tslint-config-prettier": "^1.18.0",
         "tslint-react": "^3.6.0",
-        "typescript": "^3.3.3"
+        "typescript": "^3.3.3",
+        "unfetch": "^4.0.1"
     },
     "jest": {
         "preset": "react-native",
         "moduleFileExtensions": [
-            "tsx",
-            "ts",
-            "jsx",
             "js",
             "json",
+            "jsx",
+            "ts",
+            "tsx",
             "node"
         ],
         "transform": {
@@ -94,6 +95,9 @@
         "snapshotSerializers": [
             "enzyme-to-json/serializer"
         ],
-        "setupTestFrameworkScriptFile": "<rootDir>/src/setup-enzyme.ts"
+        "setupTestFrameworkScriptFile": "<rootDir>/src/setup-enzyme.ts",
+        "transformIgnorePatterns": [
+            "node_modules/(?!(jest-)?react-native|react-navigation|react-navigation-redux-helpers)"
+          ]
     }
 }

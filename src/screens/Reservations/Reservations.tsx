@@ -20,18 +20,6 @@ class Reservations extends React.PureComponent<Props, State> {
         }
     }
 
-    private _onPressMenu = (): void => {
-        this.setState({
-            screenTitle: 'NavMenu'
-        })
-    }
-
-    private _onPressMore = (): void => {
-        this.setState({
-            screenTitle: 'More More...'
-        })
-    }
-
     public render(): JSX.Element {
         return (
             <ScrollView contentContainerStyle={Style.container}>
