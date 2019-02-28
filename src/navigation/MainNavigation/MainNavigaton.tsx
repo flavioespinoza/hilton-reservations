@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { TabNavigator } from 'react-navigation'
-import CreateReservation from '../../screens/CreateReservation/CreateReservation'
-import Reservations from '../../screens/Reservations/Reservations'
+// import CreateReservation from '../../screens/CreateReservation/CreateReservation'
+import ReservationList from '../../components/ReservationsList/ReservationsList'
 
 const TabBarOptions = {
     tabBarOptions: {
@@ -31,8 +31,8 @@ const TabBarOptions = {
 
 const Nav = TabNavigator(
     {
-        ['Reservations']: { screen: Reservations },
-        ['Create Reservation']: { screen: CreateReservation }
+        ['Reservations']: { screen: ReservationList },
+        // ['Create Reservation']: { screen: CreateReservation }
         
     },
     TabBarOptions
@@ -43,17 +43,7 @@ interface Props {}
 interface State {}
 
 class MainNavigation extends React.PureComponent<Props, State> {
-    constructor (props: Props) {
-        super(props)
-
-        this.state = {
-            compName: 'CompName'
-        }
-
-    };
-
     render () {
-
         return (<Nav/>)
     }
 
