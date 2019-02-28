@@ -1,9 +1,0 @@
-mutation createReservation($data: ReservationCreateInput!){
-    createReservation(data: $data){
-        id
-        name
-        hotelName
-        arrivalDate
-        departureDate
-    }
-}

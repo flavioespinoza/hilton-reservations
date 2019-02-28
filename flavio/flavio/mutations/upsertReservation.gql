@@ -1,9 +1,0 @@
-mutation upsertReservation($where: ReservationWhereUniqueInput!, $create: ReservationCreateInput!, $update: ReservationUpdateInput!){
-    upsertReservation(where: $where, create: $create, update: $update){
-        id
-        name
-        hotelName
-        arrivalDate
-        departureDate
-    }
-}

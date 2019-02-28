@@ -1,5 +1,0 @@
-mutation updateManyReservations($data: ReservationUpdateManyMutationInput!, $where: ReservationWhereInput){
-    updateManyReservations(data: $data, where: $where){
-        count
-    }
-}

@@ -1,9 +1,0 @@
-query reservation($where: ReservationWhereUniqueInput!){
-    reservation(where: $where){
-        id
-        name
-        hotelName
-        arrivalDate
-        departureDate
-    }
-}

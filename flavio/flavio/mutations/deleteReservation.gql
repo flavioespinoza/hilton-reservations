@@ -1,9 +1,0 @@
-mutation deleteReservation($where: ReservationWhereUniqueInput!){
-    deleteReservation(where: $where){
-        id
-        name
-        hotelName
-        arrivalDate
-        departureDate
-    }
-}

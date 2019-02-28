@@ -1,5 +1,0 @@
-mutation deleteManyReservations($where: ReservationWhereInput){
-    deleteManyReservations(where: $where){
-        count
-    }
-}
