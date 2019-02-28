@@ -2,23 +2,14 @@ import * as React from 'react'
 import { Style } from './ReservationsList.style'
 import { SectionList, View, Text, Platform, TouchableOpacity } from 'react-native'
 import { ListItem } from 'react-native-elements'
-import AwesomeAlert from 'react-native-awesome-alerts'
+import { _QueryReservations } from '../../api/api'
 import AlertConfirm from '../AlertConfirm/AlertConfirm'
 import _ from 'lodash'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-const RESERVATIONS_QUERY = gql`
-    {
-        reservations {
-            id
-            hotelName
-            arrivalDate
-            departureDate
-            name
-        }
-    }
-`
+const query_reservations = _QueryReservations()
+const RESERVATIONS_QUERY = gql`${query_reservations}`
 
 interface Props {
     sections: ReadonlyArray<any> | any
@@ -160,8 +151,6 @@ class ReservationSectionList extends React.PureComponent<Props, State> {
     }
 }
 
-
-
 const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
     const { loading, reservations } = data
 
@@ -188,6 +177,7 @@ const ReservationsList = graphql(RESERVATIONS_QUERY)(({ data }: any) => {
     )
 
     return <ReservationSectionList sections={hiltonHotels} />
+            
 })
 
 export default ReservationsList
