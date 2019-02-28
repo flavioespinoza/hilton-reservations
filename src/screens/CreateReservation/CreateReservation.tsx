@@ -9,6 +9,7 @@ import _ from 'lodash'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import PickerModal from '../../components/ModalPicker/ModalPicker'
 import axios from 'axios'
+import { ReservationInput } from '../../graphql/schema'
 
 interface Props {}
 
@@ -149,8 +150,9 @@ class CreateReservation extends React.PureComponent<Props, State> {
         }
     }
 
-    private _sendReservation = (obj: any): void => {
-        let mutation = _MutationCreateReservation(obj)
+    private _sendReservation = (data: ReservationInput): void => {
+
+        let mutation = _MutationCreateReservation(data)
 
         axios({
             url: _URI,
@@ -188,15 +190,15 @@ class CreateReservation extends React.PureComponent<Props, State> {
             this.inputRefs.firstNameTextInput.current!.blur()
             this.inputRefs.lastNameTextInput.current!.blur()
 
-            let obj = {
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                hotelName: this.state.hotel,
-                arrivalDate: this.state.arrivalDate,
-                departureDate: this.state.departureDate
+            let data = {
+                $name: `${this.state.firstName} ${this.state.lastName}`,
+                $arrivalDate: this.state.arrivalDate,
+                $departureDate: this.state.departureDate,
+                $hotelName: this.state.hotel
             }
 
-            this._sendReservation(obj)
+            this._sendReservation(data)
+        
         } else {
             alert('All fields are required!')
         }
