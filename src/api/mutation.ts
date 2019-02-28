@@ -1,14 +1,14 @@
-import axios from 'axios'
+import { ReservationInput } from '../graphql/schema'
 
-const _MutationCreateReservation = (obj: any) => {
+const _MutationCreateReservation = (data: ReservationInput) => {
     return `
         mutation {
             createReservation(
                 data: {
-                    name: "${obj.firstName} ${obj.lastName}"
-                    hotelName: "${obj.hotelName}"
-                    arrivalDate: "${obj.arrivalDate}"
-                    departureDate: "${obj.departureDate}"
+                    name: "${data.$name}"
+                    hotelName: "${data.$hotelName}"
+                    arrivalDate: "${data.$arrivalDate}"
+                    departureDate: "${data.$departureDate}"
                 }
             ) 
             {

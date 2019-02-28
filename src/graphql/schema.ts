@@ -31,26 +31,6 @@ type ReservationCreateInput = ($input: ReservationInput) => {
   
 }
 
-type ReservationCreateInput__2 = ($name: String, $hotelName: String, $arrivalDate: String, $departureDate: String) => {
-    name: String
-    hotelName: String
-    arrivalDate: String
-    departureDate: String
-}
-
-// interface Mutation {
-//     createReservation(data: ReservationCreateInput): Reservation
-//     updateReservation(data: ReservationUpdateInput, where: ReservationWhereUniqueInput): Reservation
-//     deleteReservation(where: ReservationWhereUniqueInput): Reservation
-//     upsertReservation(
-//         where: ReservationWhereUniqueInput,
-//         create: ReservationCreateInput,
-//         update: ReservationUpdateInput
-//     ): Reservation
-//     updateManyReservations(data: ReservationUpdateManyMutationInput, where: ReservationWhereInput): BatchPayload
-//     deleteManyReservations(where: ReservationWhereInput): BatchPayload
-// }
-
 type Mutation = {
     createReservation(data: ReservationCreateInput): Reservation,
     updateReservation(data: ReservationUpdateInput, where: ReservationWhereUniqueInput): Reservation,
@@ -272,4 +252,8 @@ type ReservationWhereUniqueInput = {
 
 interface Subscription {
     reservation(where: ReservationSubscriptionWhereInput): ReservationSubscriptionPayload
+}
+
+export {
+    ReservationInput
 }
