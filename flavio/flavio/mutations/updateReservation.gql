@@ -1,9 +1,0 @@
-mutation updateReservation($data: ReservationUpdateInput!, $where: ReservationWhereUniqueInput!){
-    updateReservation(data: $data, where: $where){
-        id
-        name
-        hotelName
-        arrivalDate
-        departureDate
-    }
-}
