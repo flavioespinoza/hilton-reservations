@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { TabNavigator } from 'react-navigation'
 import CreateReservation from '../../screens/CreateReservation/CreateReservation'
 import Reservations from '../../screens/Reservations/Reservations'
@@ -28,7 +29,7 @@ const TabBarOptions = {
     swipeEnabled: true
 }
 
-const MainNavigation = TabNavigator(
+const Nav = TabNavigator(
     {
         ['Reservations']: { screen: Reservations },
         ['Create Reservation']: { screen: CreateReservation }
@@ -36,5 +37,26 @@ const MainNavigation = TabNavigator(
     },
     TabBarOptions
 )
+
+interface Props {}
+
+interface State {}
+
+class MainNavigation extends React.PureComponent<Props, State> {
+    constructor (props: Props) {
+        super(props)
+
+        this.state = {
+            compName: 'CompName'
+        }
+
+    };
+
+    render () {
+
+        return (<Nav/>)
+    }
+
+}
 
 export default MainNavigation
