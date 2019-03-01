@@ -4,7 +4,7 @@ import { _QueryReservations } from '../../api/api'
 import gql from 'graphql-tag'
 import { MockedProvider } from 'react-apollo/test-utils'
 import renderer from 'react-test-renderer'
-import { shallow } from 'enzyme'
+
 
 const query_reservations = _QueryReservations()
 const RESERVATIONS_QUERY = gql`${query_reservations}`
@@ -51,10 +51,13 @@ const mocks = [
     }
 ]
 
-it('renders without error', () => {
-    renderer.create(
-        <MockedProvider mocks={mocks} addTypename={false}>
-            <ReservationsList />
-        </MockedProvider>
-    )
+
+describe('ReservationsList', () => {
+    it('renders without error', () => {
+        renderer.create(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <ReservationsList />
+            </MockedProvider>
+        )
+    })
 })

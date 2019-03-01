@@ -3,7 +3,7 @@ import { Style } from './ReservationsList.style'
 import { SectionList, View, Text, Platform, TouchableOpacity } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import { _QueryReservations } from '../../api/api'
-import AlertConfirm from '../AlertConfirm/AlertConfirm'
+// import AlertConfirm from '../AlertConfirm/AlertConfirm'
 import _ from 'lodash'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -113,26 +113,6 @@ class ReservationSectionList extends React.PureComponent<Props, State> {
         this._showAlert(item)
     }
 
-    private _confirmReservation = (item: any) => {
-        console.info('Confirm Reservation', item)
-        this._hideAlert()
-    }
-
-    private _cancelReservation = () => {
-        this.setState({
-            confirmCancel: true
-        })
-    }
-
-    private _confirmCancelReservation = (item: any) => {
-        this.setState({
-            showAlert: false
-        })
-        setTimeout(() => {
-            this._hideAlert()
-        }, 1000)
-    }
-
     render() {
         return (
             <View style={Style.container}>
@@ -145,7 +125,7 @@ class ReservationSectionList extends React.PureComponent<Props, State> {
                     renderItem={this._renderItem}
                     keyExtractor={this._keyExtractor}
                 />
-                <AlertConfirm showAlert={this.state.showAlert} stateProps={this.state}  />
+                {/* <AlertConfirm showAlert={this.state.showAlert} stateProps={this.state}  /> */}
             </View>
         )
     }

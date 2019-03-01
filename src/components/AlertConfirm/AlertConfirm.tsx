@@ -41,7 +41,7 @@ class AlertConfirm extends React.PureComponent<Props, State> {
     }
 
     componentWillReceiveProps(newProps: any) {
-        console.log('newProps', newProps)
+        // console.log('newProps', newProps)
         this.setState({
             alertTitle: 'Reservation Confirmed!',
             alertMessage: 'Details below',
@@ -55,7 +55,7 @@ class AlertConfirm extends React.PureComponent<Props, State> {
     }
 
     componentDidMount(){
-        console.log('componentDidMount() --> stateProps', this.props.stateProps)
+        // console.log('componentDidMount() --> stateProps', this.props.stateProps)
         this._showAlert(this.props.stateProps)
     }
 
@@ -87,7 +87,7 @@ class AlertConfirm extends React.PureComponent<Props, State> {
     }
 
     private _confirmReservation = (item: any) => {
-        console.info('Confirm Reservation', item)
+        // console.info('Confirm Reservation', item)
         this._hideAlert()
     }
 
