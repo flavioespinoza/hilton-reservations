@@ -2,7 +2,6 @@ import * as React from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 import { Style } from './DateSelection.style'
-import _formatDate from '../../utils/formatDate'
 
 interface Props {
     dateType: string
