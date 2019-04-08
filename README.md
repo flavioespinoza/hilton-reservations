@@ -16,13 +16,13 @@ https://facebook.github.io/react-native/docs/getting-started
 
 Clone the repo
 ```bash
-git clone https://github.com/flavioespinoza/hilton_reservations.git
+git clone https://github.com/flavioespinoza/hilton-reservations.git
 ```
 
 
 cd into directory 
 ```bash
-cd hilton_reservations
+cd hilton-reservations
 ```
 
 
