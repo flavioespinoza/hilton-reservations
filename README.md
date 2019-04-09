@@ -26,9 +26,9 @@ cd hilton_reservations
 ```
 
 
-Install with yarn or npm 
+Install with npm
 ```bash
-yarn install
+npm i
 ```
 
 
