@@ -1,4 +1,5 @@
 declare module 'react-native-awesome-alerts'
+declare module 'react-navigation'
 declare module 'chance'
 declare module 'moxios'
 declare module 'sinon'
