@@ -244,7 +244,6 @@ export default App
 _schema.graphql_
 
 ```ruby
-
 type Mutation {
     createReservation(data: ReservationCreateInput!): Reservation!
     updateReservation(data: ReservationUpdateInput!, where: ReservationWhereUniqueInput!): Reservation
@@ -262,7 +261,6 @@ type Mutation {
 _schema.ts_
 
 ```typescript
-
 const MUTATION = {
     createReservation($data: ReservationCreateInput): Reservation
     updateReservation($data: ReservationUpdateInput, $where: ReservationWhereUniqueInput): Reservation
