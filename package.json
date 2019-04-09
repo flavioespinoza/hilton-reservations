@@ -55,7 +55,7 @@
         "prop-types": "^15.7.2",
         "react": "16.6.3",
         "react-apollo": "^2.4.1",
-        "react-native": "0.58.4",
+        "react-native": "^0.59.4",
         "react-native-awesome-alerts": "^1.2.0",
         "react-native-elements": "^1.0.0",
         "react-native-mock-render": "^0.1.2",

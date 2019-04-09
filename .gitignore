@@ -55,13 +55,13 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
+
+
+# Testing
+.jest/cache/
+__snapshots__/
+
+
 # My Ignore Items
 .vscode/
-.idea/
 .env
-
-src/sandbox/
-
-.jest/cache/
-
-__snapshots__/
