@@ -65,3 +65,6 @@ __snapshots__/
 # My Ignore Items
 .vscode/
 .env
+
+yarn.lock
+package-lock.json
