@@ -212,7 +212,7 @@ class AlertConfirm extends React.PureComponent<Props, State> {
                                                 this._confirmReservation(this.props.stateProps)
                                             }}
                                         >
-                                            <Text style={Style.alertBtn}>Confirm Reservation</Text>
+                                            <Text style={Style.alertBtn}>Keep Reservation</Text>
                                         </TouchableOpacity>
                                         <View style={{ width: '10%', height: 40 }} />
                                     </View>
