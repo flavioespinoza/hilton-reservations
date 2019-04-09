@@ -11,7 +11,9 @@
         "test": "jest -u --no-cache",
         "test:wu": "jest --no-cache"
     },
-    "dependencies": {},
+    "dependencies": {
+        "braces": "^3.0.0"
+    },
     "devDependencies": {
         "@types/enzyme": "^3.1.18",
         "@types/enzyme-adapter-react-16": "^1.0.4",
