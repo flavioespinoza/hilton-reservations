@@ -33,15 +33,19 @@ cd hilton_reservations
 ```
 
 
-Install with yarn or npm 
+Install with npm
 ```bash
-yarn install
+npm i
 ```
 
 
 ## Run  on XCode's iPhone emulator
 ```bash {.copy-clip}
 yarn start:ios
+
+"or" 
+
+react-native run-ios
 ```
 
 <img src='docs/img/balls.png' width='49%' />
@@ -63,10 +67,12 @@ __[Genymotion has the best one for mac folks](https://www.genymotion.com/)__
 When the Android emulator is up and running the app
 
 ```bash {.copy-clip}
-yarn start: android
-```
+yarn start:android
 
---
+"or"
+
+react-native run-android
+```
 
 ---
 

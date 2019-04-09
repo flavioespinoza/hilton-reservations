@@ -61,6 +61,10 @@ When the Android emulator is up and running the app
 
 ```bash {.copy-clip}
 yarn start:android
+
+"or"
+
+react-native run-android
 ```
 
 --
