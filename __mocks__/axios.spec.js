@@ -3,6 +3,7 @@ import axios from 'axios'
 import moxios from 'moxios'
 import sinon from 'sinon'
 
+
 const USER_FRED = {
     hotelName: 'Unit Test Axios Hilton',
     firstName: 'Fred',

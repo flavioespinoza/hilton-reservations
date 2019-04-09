@@ -2,12 +2,13 @@ import { deepEqual } from 'assert'
 import { _MutationCreateReservation } from './mutation'
 
 const input = {
-    firstName : 'Fred',
+    firstName: 'Fred',
     lastName: 'Flintstone',
     hotelName: 'Unit Test Hilton',
     arrivalDate: '1/1/1',
     departureDate: '2/1/1'
 }
+
 
 const CHECK_MUTATION_CREATE_RESERVATION = () => {
     return `
@@ -32,8 +33,8 @@ const CHECK_MUTATION_CREATE_RESERVATION = () => {
 }
 
 describe('mutation create reservation', () => {
-    
-    it ('should deep equal CHECK_MUTATION_CREATE_RESERVATION', (done) => {
+
+    it('should deep equal CHECK_MUTATION_CREATE_RESERVATION', (done) => {
         let data = {
             $name: `${input.firstName} ${input.lastName}`,
             $arrivalDate: input.arrivalDate,
