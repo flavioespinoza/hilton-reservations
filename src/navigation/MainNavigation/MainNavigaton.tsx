@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { TabNavigator } from 'react-navigation'
-// import CreateReservation from '../../screens/CreateReservation/CreateReservation'
+import CreateReservation from '../../screens/CreateReservation/CreateReservation'
 import ReservationList from '../../components/ReservationsList/ReservationsList'
 
 const TabBarOptions = {
@@ -32,7 +32,7 @@ const TabBarOptions = {
 const Nav = TabNavigator(
     {
         ['Reservations']: { screen: ReservationList },
-        // ['Create Reservation']: { screen: CreateReservation }
+        ['Create Reservation']: { screen: CreateReservation }
         
     },
     TabBarOptions
