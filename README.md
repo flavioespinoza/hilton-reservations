@@ -60,7 +60,7 @@ __[Genymotion has the best one for mac folks](https://www.genymotion.com/)__
 When the Android emulator is up and running the app
 
 ```bash {.copy-clip}
-yarn start: android
+yarn start:android
 ```
 
 --
