@@ -374,43 +374,157 @@ html body .md-cmd-block .copy-clip-icon {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview   ">
-      <h1 class="mume-header" id="setting-up-react-native-development-environment">Setting up React Native development environment</h1>
+      <h1 class="mume-header" id="setting-up-react-native-development-environment">Setting up React Native Development Environment</h1>
 
 <hr>
-<h2 class="mume-header" id="react-native-for-ios-is-not-supported-on-windows-and-linux">React Native for iOS <code>IS NOT</code> supported on Windows and Linux</h2>
+<h3 class="mume-header" id="react-native-for-ios-is-not-supported-on-windows-or-linux">React Native for iOS <code>IS NOT</code> supported on <code>Windows</code> or <code>Linux</code></h3>
 
 <p>A <code>Mac</code> desktop or <code>Macbook Pro</code> laptop is required to build apps using that use native <code>iOS</code> code.</p>
 <hr>
-<h2 class="mume-header" id="terminal">Terminal</h2>
+<h1 class="mume-header" id="terminal">Terminal</h1>
 
 <blockquote>
-<p>All commands and outputs shown in this guide are done inside of the <code>Terminal</code>.</p>
+<p>Most install commands and outputs shown in this guide are done inside of the <code>Terminal</code>.</p>
 </blockquote>
-<h4 class="mume-header" id="start-terminal">Start Terminal</h4>
+<blockquote>
+<p>Other app installations such as <code>Android Studio</code> require an DMG Installer which can be downloaded from the links provided in this guide.</p>
+</blockquote>
+<br>
+<h3 class="mume-header" id="start-terminal">Start Terminal</h3>
 
-<p>To start/open the <code>Terminal</code> click on the <code>magnifying glass icon</code> in the <code>upper right corner</code> of the <code>menu bar</code> to open the <code>Spotlight</code> search box.</p>
+<ul>
+<li>To start/open the <code>Terminal</code> click on the <code>magnifying glass icon</code> in the <code>upper right corner</code> of the <code>menu bar</code> to open the <code>Spotlight</code> search box.</li>
+<li>Type the word <code>terminal</code> into the <code>Spotlight</code> search box and hit the<code>Enter-key</code>.</li>
+</ul>
 <br>
 <img src="img/terminal-open.png">
 <br>
 <br>
-<p>Type the word <code>terminal</code> into the <code>Spotlight</code> search box and hit the<code>Enter-key</code>.</p>
 <br>
+<h3 class="mume-header" id="use-terminal">Use Terminal</h3>
+
+<p>Most <code>commands</code> described in this installation guide are done in the <code>Terminal</code>.<br>
+<br></p>
 <img src="img/terminal.png">
 <br>
 <br>
-<p>All <code>commands</code> in this installation guide are done in the <code>Terminal</code>.</p>
+<br>
 <hr>
-<h1 class="mume-header" id="installing-dependencies-for-ios-and-android">Installing dependencies for iOS and Android</h1>
+<h1 class="mume-header" id="java-the-jdk">Java &amp; the JDK</h1>
 
 <blockquote>
-<p>You will need <code>Xcode</code>, <code>Node</code>, <code>Watchman</code> the <code>React Native CLI</code>, <code>Python2</code>, and a <code>JDK</code> (Java Development Kit).</p>
+<p>React Native requires a recent version of <code>Java</code> and the <code>JDK</code> (Java Development Kit).</p>
+</blockquote>
+<br>
+<h2 class="mume-header" id="check-the-jdk">Check the JDK</h2>
+
+<p>Check if <code>Java</code> and the <code>JDK</code> are currently installed on your system.</p>
+<pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">java -version
+</pre><div class="md-label md-label-output">If <span class="md-key">Java</span> and the <span class="md-key">JDK</span> are installed you will see something similar to the following ouput.</div>
+<pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">openjdk version <span class="token string">&quot;1.8.0_202&quot;</span>
+OpenJDK Runtime Environment <span class="token punctuation">(</span>AdoptOpenJDK<span class="token punctuation">)</span><span class="token punctuation">(</span>build 1.8.0_202-b08<span class="token punctuation">)</span>
+OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<span class="token punctuation">)</span><span class="token punctuation">(</span>build 25.202-b08, mixed mode<span class="token punctuation">)</span>
+</pre><br>
+<div class="md-label md-label-output">If <span class="md-key">Java</span> and the <span class="md-key">JDK</span> <span class="md-key">ARE NOT</span> installed you will see following ouput.</div>
+<pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">-bash: java: <span class="token function">command</span> not found
+</pre><br>
+<h2 class="mume-header" id="install-the-jdk">Install the JDK</h2>
+
+<blockquote>
+<p>To install <code>Java</code> and the <code>JDK</code> follow the installation steps outlined in this section.</p>
+</blockquote>
+<h3 class="mume-header" id="1-download-jdk-installer-for-macos-x">1. Download JDK Installer for MacOS X</h3>
+
+<ul>
+<li>
+<p>Visit tje <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle JDK 8 Available Downloads</a> page to download the installer for <code>MacOS</code>. You can also use <a href="http://openjdk.java.net/install/">OpenJDK 8</a> as an alternative.</p>
+</li>
+<li>
+<p><code>Accept the Licence Agreement</code> for the installer you wish to download.</p>
+</li>
+<li>
+<p>Click the link for the <code>Mac OS X x64</code> DMG installer to begin download.</p>
+</li>
+</ul>
+<br>
+<img src="img/java-installer-download-1.png">
+<br>
+<br>
+<br>
+<h3 class="mume-header" id="2-save-jdk-installer">2. Save JDK Installer</h3>
+
+<p>Save the <code>JDK installer</code> to the <code>Downloads</code> directory.</p>
+<br>
+<img src="img/java-installer-save.png">
+<br>
+<br>
+<br>
+<h3 class="mume-header" id="3-launch-jdk-installer">3. Launch JDK Installer</h3>
+
+<p><code>Double-click</code> on the <code>DMG file</code> in the <code>Downloads</code> directory to launch the installer.</p>
+<br>
+<img src="img/java-installer-launch.png">
+<br>
+<br>
+<br>
+<h3 class="mume-header" id="4-install-the-jdk">4. Install the JDK</h3>
+
+<ul>
+<li><code>Double-click</code> on <code>box-icon</code> to start installation, and f<code>ollow the installation prompts</code>.</li>
+<li><code>There is nothing you need to configure</code> during this installation.</li>
+</ul>
+<br>
+<img src="img/jdk-install-1.png" style="width: 35%;">
+<br>
+<br>
+<br>
+<h3 class="mume-header" id="5-verify-the-jdk-installation">5. Verify the JDK Installation</h3>
+
+<p>Check if <code>Java</code> and the <code>JDK</code> were successfully installed.</p>
+<pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">java -version
+</pre><div class="md-label md-label-output">If the insatll was a sucess you will see something similar to the following in the output.</div>
+<pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">openjdk version <span class="token string">&quot;1.8.0_202&quot;</span>
+OpenJDK Runtime Environment <span class="token punctuation">(</span>AdoptOpenJDK<span class="token punctuation">)</span><span class="token punctuation">(</span>build 1.8.0_202-b08<span class="token punctuation">)</span>
+OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<span class="token punctuation">)</span><span class="token punctuation">(</span>build 25.202-b08, mixed mode
+</pre><br>
+<h4 class="mume-header" id="you-are-now-ready-to-setup-your-android-development-environment-and-run-java-based-applications">You are now ready to setup your <code>Android Development Environment</code> and run <code>Java</code> based applications.</h4>
+
+<br>
+<hr>
+<h1 class="mume-header" id="ios-and-android-dependencies">iOS and Android Dependencies</h1>
+
+<h4 class="mume-header" id="required-for-both-ios-and-android-development">Required for both <code>iOS</code> and <code>Android</code> development</h4>
+
+<br>
+<ul>
+<li>Java &amp; the JDK</li>
+<li>Homebrew</li>
+<li>Xcode</li>
+<li>Command Line Toools</li>
+<li>Node</li>
+<li>Watchman</li>
+<li>React Native CLI</li>
+<li>Python</li>
+</ul>
+<br>
+<h4 class="mume-header" id="required-for-android-development-only">Required for <code>Android</code> development only</h4>
+
+<br>
+<ul>
+<li>Android Studio</li>
+<li>Genymotion</li>
+</ul>
+<br>
+<blockquote>
+<p>We will use <code>Homebrew</code> to install certain reqiuriments such as <code>Node</code> and <code>Watchman</code>.</p>
+</blockquote>
+<blockquote>
+<p>The other requirements will be insatlled by various methods outlined in this section.</p>
 </blockquote>
 <blockquote>
 <p>While you can use the editor of your choice to develop your app, you will need to install <code>Android Studio</code> in order to set up the necessary tooling to build and run your <code>React Native</code> app for <code>Android</code>.</p>
 </blockquote>
-<blockquote>
-<p>I also reccomend using <code>Homebrew</code> to install <code>Node</code> and <code>Watchman</code>.</p>
-</blockquote>
+<br>
 <h3 class="mume-header" id="homebrew">Homebrew</h3>
 
 <p>Check if <code>Homebrew</code> is installed.</p>
@@ -420,6 +534,7 @@ html body .md-cmd-block .copy-clip-icon {
 Homebrew/homebrew-core <span class="token punctuation">(</span>git revision 0548<span class="token punctuation">;</span> last commit 2019-03-23<span class="token punctuation">)</span>
 Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d7<span class="token punctuation">;</span> last commit 2019-03-23<span class="token punctuation">)</span>
 </pre><p>If <code>Homebrew</code> <code>IS NOT</code> installed use the <a href="https://brew.sh/">Install Homebrew</a> instruction guide.</p>
+<br>
 <h3 class="mume-header" id="xcode">Xcode</h3>
 
 <p>Check if you have <code>Xcode</code> is installed.</p>
@@ -427,6 +542,7 @@ Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d
 </pre><p>Make sure <code>Xcode</code> is <code>version 9.4</code> or higher.</p>
 <pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">Xcode 10.1
 </pre><p>The easiest way to <code>install</code> or <code>update</code> <code>Xcode</code> is via the <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a>. Installing <code>Xcode</code> will also install the <code>iOS Simulator</code> and all the necessary tools to build your <code>iOS</code> app.</p>
+<br>
 <h3 class="mume-header" id="command-line-tools">Command Line Tools</h3>
 
 <p>Open <code>Xcode</code>, then choose <code>Preferences</code> from the <code>Xcode</code> menu.</p>
@@ -437,6 +553,8 @@ Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d
 <p>Go to the <code>Locations</code> panel and install the tools by selecting the most recent version in the <code>Command Line Tools dropdown</code>.</p>
 <br>
 <img src="img/xcode-cmd-line-tools.png">
+<br>
+<br>
 <h3 class="mume-header" id="node">Node</h3>
 
 <p>Check if <code>Node</code> is installed.</p>
@@ -447,7 +565,8 @@ Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d
 <pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">brew upgrade node
 </pre><p>If <code>Node</code> <code>IS NOT</code> installed use <code>Homebrew</code> to install.</p>
 <pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">brew <span class="token function">install</span> node
-</pre><h3 class="mume-header" id="python">Python</h3>
+</pre><br>
+<h3 class="mume-header" id="python">Python</h3>
 
 <p>Check if <code>Python</code> is installed.</p>
 <pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">python --version
@@ -455,27 +574,17 @@ Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d
 <pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">Python 2.7.16
 </pre><p>If <code>Python</code> <code>IS NOT</code> installed or the current version is not <code>2</code> or higher use <code>Homebrew</code> to install or upgrade.</p>
 <pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">brew <span class="token function">install</span> python2
-</pre><h3 class="mume-header" id="watchman">Watchman</h3>
+</pre><br>
+<h3 class="mume-header" id="watchman">Watchman</h3>
 
 <p><a href="https://facebook.github.io/watchman">Watchman</a> is a tool by Facebook for watching changes in the filesystem. It is highly recommended you install it for better performance.</p>
 <pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">brew <span class="token function">install</span> watchman
-</pre><h3 class="mume-header" id="the-react-native-cli">The React Native CLI</h3>
+</pre><br>
+<h3 class="mume-header" id="react-native-cli">React Native CLI</h3>
 
 <p>Globally install the React Native CLI (command line interface.)</p>
 <pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip"><span class="token function">npm</span> <span class="token function">install</span> -g react-native-cli
-</pre><hr>
-<h2 class="mume-header" id="java-development-kit">Java Development Kit</h2>
-
-<p>React Native requires a recent version of the <code>JDK</code> (Java Development Kit).</p>
-<br>
-<p>Check if <code>Java</code> is installed.</p>
-<pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip">java -version
-</pre><div class="md-label md-label-output">If <span class="md-key">Java</span> is installed you will see the following ouput.</div>
-<pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">openjdk version <span class="token string">&quot;1.8.0_202&quot;</span>
-OpenJDK Runtime Environment <span class="token punctuation">(</span>AdoptOpenJDK<span class="token punctuation">)</span><span class="token punctuation">(</span>build 1.8.0_202-b08<span class="token punctuation">)</span>
-OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<span class="token punctuation">)</span><span class="token punctuation">(</span>build 25.202-b08, mixed mode<span class="token punctuation">)</span>
 </pre><br>
-<p>If <code>Java</code> <code>IS NOT</code> installed you can <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Download and install Oracle JDK 8</a> if needed. You can also use <a href="http://openjdk.java.net/install/">OpenJDK 8</a> as an alternative.</p>
 <hr>
 <h1 class="mume-header" id="android-development-environment">Android development environment</h1>
 
@@ -504,7 +613,7 @@ OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<sp
 <br>
 <br>
 <p>Drag the <code>Android Studio Icon</code>into the <code>Applications</code> folder.</p>
-<img src="img/android-studio-1.png" width="50%">
+<img src="img/android-studio-1.png" width="35%">
 <br>
 <p><code>Double-click</code> the <code>Android Studio Icon</code> to start the install process.</p>
 <br>
@@ -516,26 +625,26 @@ OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<sp
 <div class="md-label md-label-output">
 <h4>Complete Installation</h4>
 <br>
-<img src="img/android-studio-2.png" width="50%">
+<img src="img/android-studio-2.png" width="35%">
 <br>
 <br>
 <br>
 <h4>Install Type</h4>
 <br>
-<img src="img/android-studio-5.png" width="50%">
+<img src="img/android-studio-5.png" width="35%">
 <br>
 <br>
 <h4>Downloading Components</h4>
 <p>You may get an alert that the <code>HAXM Installation</code> wants to make changes.</p>
 <br>
-<img src="img/android-studio-9.png" width="50%">
+<img src="img/android-studio-9.png" width="35%">
 <br>
 <br>
 <p>If this happens enter your <code>password</code> and hit <code>ok</code>.</p>
 <br>
 <p>When the <strong><code>Downloading Components</code></strong> step is complete click <code>Finish</code></p>
 <br>
-<img src="img/android-studio-10.png" width="50%">
+<img src="img/android-studio-10.png" width="35%">
 <br>
 <br>
 <h4>Install Complete</h4>
@@ -704,25 +813,39 @@ OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<sp
 
       </div>
       <div class="md-sidebar-toc"><ul>
-<li><a href="#setting-up-react-native-development-environment">Setting up React Native development environment</a>
-<ul>
-<li><a href="#react-native-for-ios-is-not-supported-on-windows-and-linux">React Native for iOS <code>IS NOT</code> supported on Windows and Linux</a></li>
+<li><a href="#setting-up-react-native-development-environment">Setting up React Native Development Environment</a><br>
+* <a href="#react-native-for-ios-is-not-supported-on-windows-or-linux">React Native for iOS <code>IS NOT</code> supported on <code>Windows</code> or <code>Linux</code></a></li>
 <li><a href="#terminal">Terminal</a><br>
-* <a href="#start-terminal">Start Terminal</a></li>
+* <a href="#start-terminal">Start Terminal</a><br>
+* <a href="#use-terminal">Use Terminal</a></li>
+<li><a href="#java-the-jdk">Java &amp; the JDK</a>
+<ul>
+<li><a href="#check-the-jdk">Check the JDK</a></li>
+<li><a href="#install-the-jdk">Install the JDK</a>
+<ul>
+<li><a href="#1-download-jdk-installer-for-macos-x">1. Download JDK Installer for MacOS X</a></li>
+<li><a href="#2-save-jdk-installer">2. Save JDK Installer</a></li>
+<li><a href="#3-launch-jdk-installer">3. Launch JDK Installer</a></li>
+<li><a href="#4-install-the-jdk">4. Install the JDK</a></li>
+<li><a href="#5-verify-the-jdk-installation">5. Verify the JDK Installation</a>
+<ul>
+<li><a href="#you-are-now-ready-to-setup-your-android-development-environment-and-run-java-based-applications">You are now ready to setup your <code>Android Development Environment</code> and run <code>Java</code> based applications.</a></li>
 </ul>
 </li>
-<li><a href="#installing-dependencies-for-ios-and-android">Installing dependencies for iOS and Android</a><br>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ios-and-android-dependencies">iOS and Android Dependencies</a><br>
+* <a href="#required-for-both-ios-and-android-development">Required for both <code>iOS</code> and <code>Android</code> development</a><br>
+* <a href="#required-for-android-development-only">Required for <code>Android</code> development only</a><br>
 * <a href="#homebrew">Homebrew</a><br>
 * <a href="#xcode">Xcode</a><br>
 * <a href="#command-line-tools">Command Line Tools</a><br>
 * <a href="#node">Node</a><br>
 * <a href="#python">Python</a><br>
 * <a href="#watchman">Watchman</a><br>
-* <a href="#the-react-native-cli">The React Native CLI</a>
-<ul>
-<li><a href="#java-development-kit">Java Development Kit</a></li>
-</ul>
-</li>
+* <a href="#react-native-cli">React Native CLI</a></li>
 <li><a href="#android-development-environment">Android development environment</a>
 <ul>
 <li><a href="#install-android-studio">Install Android Studio</a>

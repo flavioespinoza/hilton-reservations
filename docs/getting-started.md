@@ -1,54 +1,194 @@
-# Setting up React Native development environment
+# Setting up React Native Development Environment
 
 ---
 
-## React Native for iOS `IS NOT` supported on Windows and Linux
+### React Native for iOS `IS NOT` supported on `Windows` or `Linux`
 
  A `Mac` desktop or `Macbook Pro` laptop is required to build apps using that use native `iOS` code.
 
  ---
 
-## Terminal
+# Terminal
 
-> All commands and outputs shown in this guide are done inside of the `Terminal`.
+> Most install commands and outputs shown in this guide are done inside of the `Terminal`.
+
+> Other app installations such as `Android Studio` require an DMG Installer which can be downloaded from the links provided in this guide. 
 
 
-#### Start Terminal
+### Start Terminal
 
-To start/open the `Terminal` click on the `magnifying glass icon` in the `upper right corner` of the `menu bar` to open the `Spotlight` search box.
+- To start/open the `Terminal` click on the `magnifying glass icon` in the `upper right corner` of the `menu bar` to open the `Spotlight` search box.
+- Type the word `terminal` into the `Spotlight` search box and hit the` Enter-key`.
 
 <br />
 
 <img src='img/terminal-open.png' />
 
 <br />
-<br />
 
-Type the word `terminal` into the `Spotlight` search box and hit the` Enter-key`.
 
+
+
+### Use Terminal
+Most `commands` described in this installation guide are done in the `Terminal`.
 <br />
 
 <img src='img/terminal.png' />
 
 <br />
 <br />
+<br />
 
-All `commands` in this installation guide are done in the `Terminal`.
+
 
 ---
 
-# Installing dependencies for iOS and Android
+# Java & the JDK
+
+> React Native requires a recent version of `Java` and the `JDK` (Java Development Kit). 
 
 
-> You will need `Xcode`, `Node`, `Watchman` the `React Native CLI`, `Python2`, and a `JDK` (Java Development Kit).
+## Check the JDK
+Check if `Java` and the `JDK` are currently installed on your system.
+
+```bash {.copy-clip}
+java -version
+```
+
+<div class='md-label md-label-output'>If <span class='md-key'>Java</span> and the <span class='md-key'>JDK</span> are installed you will see something similar to the following ouput.</div>
+
+```bash {.copy-clip .md-output}
+openjdk version "1.8.0_202"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_202-b08)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.202-b08, mixed mode)
+```
+<br />
+
+<div class='md-label md-label-output'>If <span class='md-key'>Java</span> and the <span class='md-key'>JDK</span> <span class='md-key'>ARE NOT</span> installed you will see following ouput.</div>
+
+```bash {.copy-clip .md-output}
+-bash: java: command not found
+```
+
+
+## Install the JDK
+
+> To install `Java` and the `JDK` follow the installation steps outlined in this section.
+
+### 1. Download JDK Installer for MacOS X
+
+-  Visit tje [Oracle JDK 8 Available Downloads](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page to download the installer for `MacOS`. You can also use [OpenJDK 8](http://openjdk.java.net/install/) as an alternative.
+
+- `Accept the Licence Agreement` for the installer you wish to download.
+
+- Click the link for the `Mac OS X x64` DMG installer to begin download.
+
+<br />
+
+<img src='img/java-installer-download-1.png' />
+
+<br />
+<br />
+<br />
+
+### 2. Save JDK Installer
+
+Save the `JDK installer` to the `Downloads` directory.
+
+<br />
+
+<img src='img/java-installer-save.png' />
+
+<br />
+<br />
+<br />
+
+### 3. Launch JDK Installer
+
+`Double-click` on the `DMG file` in the `Downloads` directory to launch the installer.
+
+<br />
+
+<img src='img/java-installer-launch.png' />
+
+<br />
+<br />
+<br />
+
+
+### 4. Install the JDK
+- `Double-click` on `box-icon` to start installation, and f`ollow the installation prompts`.  
+- `There is nothing you need to configure` during this installation.
+
+<br />
+
+<img src='img/jdk-install-1.png' style='width: 35%;' />
+
+<br />
+<br />
+<br />
+
+### 5. Verify the JDK Installation
+
+Check if `Java` and the `JDK` were successfully installed.
+
+```bash {.copy-clip}
+java -version
+```
+
+<div class='md-label md-label-output'>If the insatll was a sucess you will see something similar to the following in the output.</div>
+
+```bash {.copy-clip .md-output}
+openjdk version "1.8.0_202"
+OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_202-b08)
+OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.202-b08, mixed mode
+```
+
+<br />
+
+#### You are now ready to setup your `Android Development Environment` and run `Java` based applications.
+
+
+<br />
+
+---
+
+# iOS and Android Dependencies
+
+
+#### Required for both `iOS` and `Android` development
+
+<br />
+
+- Java & the JDK
+- Homebrew
+- Xcode
+- Command Line Toools
+- Node
+- Watchman
+- React Native CLI
+- Python
+
+
+#### Required for `Android` development only
+
+<br />
+
+- Android Studio
+- Genymotion
+
+<br />
+
+> We will use `Homebrew` to install certain reqiuriments such as `Node` and `Watchman`.
+
+> The other requirements will be insatlled by various methods outlined in this section.
 
 > While you can use the editor of your choice to develop your app, you will need to install `Android Studio` in order to set up the necessary tooling to build and run your `React Native` app for `Android`.
 
-> I also reccomend using `Homebrew` to install `Node` and `Watchman`.
-
+<br />
 
 ### Homebrew
-
+ 
 Check if `Homebrew` is installed.
 
 ```bash {.copy-clip}
@@ -62,9 +202,11 @@ Homebrew 2.0.5
 Homebrew/homebrew-core (git revision 0548; last commit 2019-03-23)
 Homebrew/homebrew-cask (git revision 4e0d7; last commit 2019-03-23)
 ```
+<br />
 
 If `Homebrew` `IS NOT` installed use the [Install Homebrew](https://brew.sh/) instruction guide.
 
+<br />
 
 ### Xcode
 
@@ -80,7 +222,11 @@ Make sure `Xcode` is `version 9.4` or higher.
 Xcode 10.1
 ```
 
-The easiest way to `install` or `update` `Xcode` is via the [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12). Installing `Xcode` will also install the `iOS Simulator` and all the necessary tools to build your `iOS` app.
+<br />
+
+The most efficent way to `install` or `update` `Xcode` is via the [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12). Installing `Xcode` will also install the `iOS Simulator` and all the necessary tools to build your `iOS` app.
+
+<br />
 
 ### Command Line Tools
 
@@ -98,6 +244,9 @@ Go to the `Locations` panel and install the tools by selecting the most recent v
 <br />
 
 <img src='img/xcode-cmd-line-tools.png' />
+
+<br />
+<br />
 
 ### Node
 
@@ -119,11 +268,13 @@ If `Node` is not `version 10.0` or higher use `Homebrew` to upgrade.
 brew upgrade node
 ```
 
+
 If `Node` `IS NOT` installed use `Homebrew` to install.
 
 ```bash {.copy-clip}
 brew install node
 ```
+<br />
 
 ### Python
 
@@ -145,6 +296,7 @@ If `Python` `IS NOT` installed or the current version is not `2` or higher use `
 brew install python2
 ```
 
+<br />
 
 ### Watchman
 
@@ -154,44 +306,20 @@ brew install python2
 brew install watchman
 ```
 
-### The React Native CLI
+<br />
 
-Globally install the React Native CLI (command line interface.)
+### React Native CLI
+
+Use `npm` to install the `React Native CLI` globally.
 
 ```bash {.copy-clip}
 npm install -g react-native-cli
 ```
 
+<br />
 
 --- 
 
-
-## Java Development Kit
-
-React Native requires a recent version of the `JDK` (Java Development Kit). 
-
-<br />
-
-Check if `Java` is installed.
-
-```bash {.copy-clip}
-java -version
-```
-
-<div class='md-label md-label-output'>If <span class='md-key'>Java</span> is installed you will see the following ouput.</div>
-
-```bash {.copy-clip .md-output}
-openjdk version "1.8.0_202"
-OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_202-b08)
-OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.202-b08, mixed mode)
-```
-
-<br />
-
-If `Java` `IS NOT` installed you can [Download and install Oracle JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) if needed. You can also use [OpenJDK 8](http://openjdk.java.net/install/) as an alternative.
-
-
----
 
 # Android development environment
 
@@ -240,7 +368,7 @@ When the download is complete `double-click` the `DGM file` to launch the instal
 Drag the `Android Studio Icon`into the `Applications` folder.
 
 
-<img src='img/android-studio-1.png' width='50%' />
+<img src='img/android-studio-1.png' width='35%' />
 
 <br />
 
@@ -259,9 +387,10 @@ Other than the steps `Complete Installation` and `Install Type` and `Downloading
 <div class='md-label md-label-output'>
 
 #### Complete Installation
+
 <br />
 
-<img src='img/android-studio-2.png' width='50%' />
+<img src='img/android-studio-2.png' width='35%' />
 
 <br />
 <br />
@@ -272,7 +401,7 @@ Other than the steps `Complete Installation` and `Install Type` and `Downloading
 
 <br />
 
-<img src='img/android-studio-5.png' width='50%' />
+<img src='img/android-studio-5.png' width='35%' />
 
 <br />
 <br />
@@ -285,7 +414,7 @@ You may get an alert that the `HAXM Installation` wants to make changes.
 
 <br />
 
-<img src='img/android-studio-9.png' width='50%' />
+<img src='img/android-studio-9.png' width='35%' />
 
 <br />
 <br />
@@ -298,7 +427,7 @@ When the **`Downloading Components`** step is complete click `Finish`
 
 <br />
 
-<img src='img/android-studio-10.png' width='50%' />
+<img src='img/android-studio-10.png' width='35%' />
 
 <br />
 <br />
