@@ -374,12 +374,50 @@ html body .md-cmd-block .copy-clip-icon {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview   ">
-      <h1 class="mume-header" id="setting-up-react-native-development-environment">Setting up React Native Development Environment</h1>
+      <h1 class="mume-header" id="setup-react-native-development-environment-guide">Setup React Native Development Environment Guide</h1>
 
+<div>............................................................................................................................................................................................................</div>
+<h1 class="mume-header" id="dependencies">Dependencies</h1>
+
+<h4 class="mume-header" id="required-for-both-ios-and-android-development">Required for both <code>iOS</code> and <code>Android</code> development</h4>
+
+<br>
+<ul>
+<li>Java &amp; the JDK</li>
+<li>Homebrew</li>
+<li>Xcode</li>
+<li>Command Line Toools</li>
+<li>Node</li>
+<li>Watchman</li>
+<li>React Native CLI</li>
+<li>Python</li>
+</ul>
+<h4 class="mume-header" id="required-for-android-development-only">Required for <code>Android</code> development only</h4>
+
+<br>
+<ul>
+<li>Android Studio</li>
+<li>Genymotion</li>
+</ul>
+<br>
+<blockquote>
+<p>We will use <code>Homebrew</code> to install certain reqiuriments such as <code>Node</code> and <code>Watchman</code>.</p>
+</blockquote>
+<blockquote>
+<p>The other requirements will be insatlled by various methods outlined in this section.</p>
+</blockquote>
+<blockquote>
+<p>While you can use the editor of your choice to develop your app, you will need to install <code>Android Studio</code> in order to set up the necessary tooling to build and run your <code>React Native</code> app for <code>Android</code>.</p>
+</blockquote>
 <hr>
-<h3 class="mume-header" id="react-native-for-ios-is-not-supported-on-windows-or-linux">React Native for iOS <code>IS NOT</code> supported on <code>Windows</code> or <code>Linux</code></h3>
+<h1 class="mume-header" id="warning">Warning</h1>
 
-<p>A <code>Mac</code> desktop or <code>Macbook Pro</code> laptop is required to build apps using that use native <code>iOS</code> code.</p>
+<blockquote>
+<p>React Native for iOS <code>IS NOT</code> supported on <code>Windows</code> or <code>Linux</code></p>
+</blockquote>
+<blockquote>
+<p>A <code>MacOS X</code> desktop or <code>Macbook Pro</code> laptop is required to build apps using that use native <code>iOS</code> code.</p>
+</blockquote>
 <hr>
 <h1 class="mume-header" id="terminal">Terminal</h1>
 
@@ -389,7 +427,6 @@ html body .md-cmd-block .copy-clip-icon {
 <blockquote>
 <p>Other app installations such as <code>Android Studio</code> require an DMG Installer which can be downloaded from the links provided in this guide.</p>
 </blockquote>
-<br>
 <h3 class="mume-header" id="start-terminal">Start Terminal</h3>
 
 <ul>
@@ -399,14 +436,11 @@ html body .md-cmd-block .copy-clip-icon {
 <br>
 <img src="img/terminal-open.png">
 <br>
-<br>
-<br>
 <h3 class="mume-header" id="use-terminal">Use Terminal</h3>
 
 <p>Most <code>commands</code> described in this installation guide are done in the <code>Terminal</code>.<br>
 <br></p>
 <img src="img/terminal.png">
-<br>
 <br>
 <br>
 <hr>
@@ -415,7 +449,6 @@ html body .md-cmd-block .copy-clip-icon {
 <blockquote>
 <p>React Native requires a recent version of <code>Java</code> and the <code>JDK</code> (Java Development Kit).</p>
 </blockquote>
-<br>
 <h2 class="mume-header" id="check-the-jdk">Check the JDK</h2>
 
 <p>Check if <code>Java</code> and the <code>JDK</code> are currently installed on your system.</p>
@@ -427,8 +460,7 @@ OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<sp
 </pre><br>
 <div class="md-label md-label-output">If <span class="md-key">Java</span> and the <span class="md-key">JDK</span> <span class="md-key">ARE NOT</span> installed you will see following ouput.</div>
 <pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">-bash: java: <span class="token function">command</span> not found
-</pre><br>
-<h2 class="mume-header" id="install-the-jdk">Install the JDK</h2>
+</pre><h2 class="mume-header" id="install-the-jdk">Install the JDK</h2>
 
 <blockquote>
 <p>To install <code>Java</code> and the <code>JDK</code> follow the installation steps outlined in this section.</p>
@@ -491,9 +523,9 @@ OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<sp
 
 <br>
 <hr>
-<h1 class="mume-header" id="ios-and-android-dependencies">iOS and Android Dependencies</h1>
+<h1 class="mume-header" id="install-ios-and-android-dependencies">Install iOS and Android Dependencies</h1>
 
-<h4 class="mume-header" id="required-for-both-ios-and-android-development">Required for both <code>iOS</code> and <code>Android</code> development</h4>
+<h4 class="mume-header" id="required-for-both-ios-and-android-development-1">Required for both <code>iOS</code> and <code>Android</code> development</h4>
 
 <br>
 <ul>
@@ -506,8 +538,7 @@ OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<sp
 <li>React Native CLI</li>
 <li>Python</li>
 </ul>
-<br>
-<h4 class="mume-header" id="required-for-android-development-only">Required for <code>Android</code> development only</h4>
+<h4 class="mume-header" id="required-for-android-development-only-1">Required for <code>Android</code> development only</h4>
 
 <br>
 <ul>
@@ -533,7 +564,8 @@ OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>AdoptOpenJDK<sp
 <pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">Homebrew 2.0.5
 Homebrew/homebrew-core <span class="token punctuation">(</span>git revision 0548<span class="token punctuation">;</span> last commit 2019-03-23<span class="token punctuation">)</span>
 Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d7<span class="token punctuation">;</span> last commit 2019-03-23<span class="token punctuation">)</span>
-</pre><p>If <code>Homebrew</code> <code>IS NOT</code> installed use the <a href="https://brew.sh/">Install Homebrew</a> instruction guide.</p>
+</pre><br>
+<p>If <code>Homebrew</code> <code>IS NOT</code> installed use the <a href="https://brew.sh/">Install Homebrew</a> instruction guide.</p>
 <br>
 <h3 class="mume-header" id="xcode">Xcode</h3>
 
@@ -541,7 +573,8 @@ Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d
 <pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip"> xcodebuild -version
 </pre><p>Make sure <code>Xcode</code> is <code>version 9.4</code> or higher.</p>
 <pre data-role="codeBlock" data-info="bash {.copy-clip .md-output}" class="language-bash copy-clip md-output">Xcode 10.1
-</pre><p>The easiest way to <code>install</code> or <code>update</code> <code>Xcode</code> is via the <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a>. Installing <code>Xcode</code> will also install the <code>iOS Simulator</code> and all the necessary tools to build your <code>iOS</code> app.</p>
+</pre><br>
+<p>The most efficent way to <code>install</code> or <code>update</code> <code>Xcode</code> is via the <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a>. Installing <code>Xcode</code> will also install the <code>iOS Simulator</code> and all the necessary tools to build your <code>iOS</code> app.</p>
 <br>
 <h3 class="mume-header" id="command-line-tools">Command Line Tools</h3>
 
@@ -582,7 +615,7 @@ Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d
 </pre><br>
 <h3 class="mume-header" id="react-native-cli">React Native CLI</h3>
 
-<p>Globally install the React Native CLI (command line interface.)</p>
+<p>Use <code>npm</code> to install the <code>React Native CLI</code> globally.</p>
 <pre data-role="codeBlock" data-info="bash {.copy-clip}" class="language-bash copy-clip"><span class="token function">npm</span> <span class="token function">install</span> -g react-native-cli
 </pre><br>
 <hr>
@@ -813,8 +846,11 @@ Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d
 
       </div>
       <div class="md-sidebar-toc"><ul>
-<li><a href="#setting-up-react-native-development-environment">Setting up React Native Development Environment</a><br>
-* <a href="#react-native-for-ios-is-not-supported-on-windows-or-linux">React Native for iOS <code>IS NOT</code> supported on <code>Windows</code> or <code>Linux</code></a></li>
+<li><a href="#setup-react-native-development-environment-guide">Setup React Native Development Environment Guide</a></li>
+<li><a href="#dependencies">Dependencies</a><br>
+* <a href="#required-for-both-ios-and-android-development">Required for both <code>iOS</code> and <code>Android</code> development</a><br>
+* <a href="#required-for-android-development-only">Required for <code>Android</code> development only</a></li>
+<li><a href="#warning">Warning</a></li>
 <li><a href="#terminal">Terminal</a><br>
 * <a href="#start-terminal">Start Terminal</a><br>
 * <a href="#use-terminal">Use Terminal</a></li>
@@ -836,9 +872,9 @@ Homebrew/homebrew-cask <span class="token punctuation">(</span>git revision 4e0d
 </li>
 </ul>
 </li>
-<li><a href="#ios-and-android-dependencies">iOS and Android Dependencies</a><br>
-* <a href="#required-for-both-ios-and-android-development">Required for both <code>iOS</code> and <code>Android</code> development</a><br>
-* <a href="#required-for-android-development-only">Required for <code>Android</code> development only</a><br>
+<li><a href="#install-ios-and-android-dependencies">Install iOS and Android Dependencies</a><br>
+* <a href="#required-for-both-ios-and-android-development-1">Required for both <code>iOS</code> and <code>Android</code> development</a><br>
+* <a href="#required-for-android-development-only-1">Required for <code>Android</code> development only</a><br>
 * <a href="#homebrew">Homebrew</a><br>
 * <a href="#xcode">Xcode</a><br>
 * <a href="#command-line-tools">Command Line Tools</a><br>
