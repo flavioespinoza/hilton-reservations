@@ -1,10 +1,48 @@
-# Setting up React Native Development Environment
+# Setup React Native Development Environment Guide
+
+<div>............................................................................................................................................................................................................</div>
+
+# Dependencies
+
+
+#### Required for both `iOS` and `Android` development
+
+<br />
+
+- Java & the JDK
+- Homebrew
+- Xcode
+- Command Line Toools
+- Node
+- Watchman
+- React Native CLI
+- Python
+
+
+#### Required for `Android` development only
+
+<br />
+
+- Android Studio
+- Genymotion
+
+<br />
+
+> We will use `Homebrew` to install certain reqiuriments such as `Node` and `Watchman`.
+
+> The other requirements will be insatlled by various methods outlined in this section.
+
+> While you can use the editor of your choice to develop your app, you will need to install `Android Studio` in order to set up the necessary tooling to build and run your `React Native` app for `Android`.
+
 
 ---
 
-### React Native for iOS `IS NOT` supported on `Windows` or `Linux`
+# Warning
 
- A `Mac` desktop or `Macbook Pro` laptop is required to build apps using that use native `iOS` code.
+> React Native for iOS `IS NOT` supported on `Windows` or `Linux`
+
+
+> A `MacOS X` desktop or `Macbook Pro` laptop is required to build apps using that use native `iOS` code.
 
  ---
 
@@ -37,8 +75,6 @@ Most `commands` described in this installation guide are done in the `Terminal`.
 
 <br />
 <br />
-<br />
-
 
 
 ---
@@ -153,8 +189,7 @@ OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.202-b08, mixed mode
 
 ---
 
-# iOS and Android Dependencies
-
+# Install iOS and Android Dependencies
 
 #### Required for both `iOS` and `Android` development
 
